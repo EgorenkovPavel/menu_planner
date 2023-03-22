@@ -43,4 +43,12 @@ class DataRepositoryImpl implements DataRepository {
   Future<void> addDishToMenu(int DishId, Day day) async {
 
   }
+
+  @override
+  Future<List<Ingredient>> getAllIngredients({String search = ''}) async {
+    return [
+      Ingredient(id: 1, name: 'Testo', unit: Unit('kg')),
+      Ingredient(id: 2, name: 'Miaso', unit: Unit('kg')),
+    ];
+  }
 }
