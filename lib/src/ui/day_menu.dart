@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:menu_planner/src/ui/dish_chooser.dart';
 import 'package:menu_planner/src/ui/menu_bloc.dart';
 
 import '../di.dart';
@@ -52,7 +53,13 @@ class DayMenu extends StatelessWidget {
               ],
             ),
             floatingActionButton: FloatingActionButton(
-              onPressed: () {},
+              onPressed: () async {
+                final dishId = await Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => DishChooser()));
+                if (dishId != null){
+                  context.read<MenuBloc>().add(MenuEvent.addDish(dishId: dishId));
+                }
+              },
               child: Icon(Icons.add),
             ),
           );

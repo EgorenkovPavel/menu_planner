@@ -20,18 +20,21 @@ mixin _$MenuEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() fetch,
     required TResult Function(Day day) changeCurrentDay,
+    required TResult Function(int dishId) addDish,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetch,
     TResult? Function(Day day)? changeCurrentDay,
+    TResult? Function(int dishId)? addDish,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetch,
     TResult Function(Day day)? changeCurrentDay,
+    TResult Function(int dishId)? addDish,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,18 +43,21 @@ mixin _$MenuEvent {
     required TResult Function(_FetchMenuEvent value) fetch,
     required TResult Function(_ChangeCurrentDayMenuEvent value)
         changeCurrentDay,
+    required TResult Function(_AddDishMenuEvent value) addDish,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchMenuEvent value)? fetch,
     TResult? Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
+    TResult? Function(_AddDishMenuEvent value)? addDish,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchMenuEvent value)? fetch,
     TResult Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
+    TResult Function(_AddDishMenuEvent value)? addDish,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$_FetchMenuEvent implements _FetchMenuEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() fetch,
     required TResult Function(Day day) changeCurrentDay,
+    required TResult Function(int dishId) addDish,
   }) {
     return fetch();
   }
@@ -123,6 +130,7 @@ class _$_FetchMenuEvent implements _FetchMenuEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetch,
     TResult? Function(Day day)? changeCurrentDay,
+    TResult? Function(int dishId)? addDish,
   }) {
     return fetch?.call();
   }
@@ -132,6 +140,7 @@ class _$_FetchMenuEvent implements _FetchMenuEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetch,
     TResult Function(Day day)? changeCurrentDay,
+    TResult Function(int dishId)? addDish,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -146,6 +155,7 @@ class _$_FetchMenuEvent implements _FetchMenuEvent {
     required TResult Function(_FetchMenuEvent value) fetch,
     required TResult Function(_ChangeCurrentDayMenuEvent value)
         changeCurrentDay,
+    required TResult Function(_AddDishMenuEvent value) addDish,
   }) {
     return fetch(this);
   }
@@ -155,6 +165,7 @@ class _$_FetchMenuEvent implements _FetchMenuEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchMenuEvent value)? fetch,
     TResult? Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
+    TResult? Function(_AddDishMenuEvent value)? addDish,
   }) {
     return fetch?.call(this);
   }
@@ -164,6 +175,7 @@ class _$_FetchMenuEvent implements _FetchMenuEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchMenuEvent value)? fetch,
     TResult Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
+    TResult Function(_AddDishMenuEvent value)? addDish,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -246,6 +258,7 @@ class _$_ChangeCurrentDayMenuEvent implements _ChangeCurrentDayMenuEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() fetch,
     required TResult Function(Day day) changeCurrentDay,
+    required TResult Function(int dishId) addDish,
   }) {
     return changeCurrentDay(day);
   }
@@ -255,6 +268,7 @@ class _$_ChangeCurrentDayMenuEvent implements _ChangeCurrentDayMenuEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetch,
     TResult? Function(Day day)? changeCurrentDay,
+    TResult? Function(int dishId)? addDish,
   }) {
     return changeCurrentDay?.call(day);
   }
@@ -264,6 +278,7 @@ class _$_ChangeCurrentDayMenuEvent implements _ChangeCurrentDayMenuEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetch,
     TResult Function(Day day)? changeCurrentDay,
+    TResult Function(int dishId)? addDish,
     required TResult orElse(),
   }) {
     if (changeCurrentDay != null) {
@@ -278,6 +293,7 @@ class _$_ChangeCurrentDayMenuEvent implements _ChangeCurrentDayMenuEvent {
     required TResult Function(_FetchMenuEvent value) fetch,
     required TResult Function(_ChangeCurrentDayMenuEvent value)
         changeCurrentDay,
+    required TResult Function(_AddDishMenuEvent value) addDish,
   }) {
     return changeCurrentDay(this);
   }
@@ -287,6 +303,7 @@ class _$_ChangeCurrentDayMenuEvent implements _ChangeCurrentDayMenuEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchMenuEvent value)? fetch,
     TResult? Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
+    TResult? Function(_AddDishMenuEvent value)? addDish,
   }) {
     return changeCurrentDay?.call(this);
   }
@@ -296,6 +313,7 @@ class _$_ChangeCurrentDayMenuEvent implements _ChangeCurrentDayMenuEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchMenuEvent value)? fetch,
     TResult Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
+    TResult Function(_AddDishMenuEvent value)? addDish,
     required TResult orElse(),
   }) {
     if (changeCurrentDay != null) {
@@ -313,6 +331,147 @@ abstract class _ChangeCurrentDayMenuEvent implements MenuEvent {
   @JsonKey(ignore: true)
   _$$_ChangeCurrentDayMenuEventCopyWith<_$_ChangeCurrentDayMenuEvent>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_AddDishMenuEventCopyWith<$Res> {
+  factory _$$_AddDishMenuEventCopyWith(
+          _$_AddDishMenuEvent value, $Res Function(_$_AddDishMenuEvent) then) =
+      __$$_AddDishMenuEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int dishId});
+}
+
+/// @nodoc
+class __$$_AddDishMenuEventCopyWithImpl<$Res>
+    extends _$MenuEventCopyWithImpl<$Res, _$_AddDishMenuEvent>
+    implements _$$_AddDishMenuEventCopyWith<$Res> {
+  __$$_AddDishMenuEventCopyWithImpl(
+      _$_AddDishMenuEvent _value, $Res Function(_$_AddDishMenuEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dishId = null,
+  }) {
+    return _then(_$_AddDishMenuEvent(
+      dishId: null == dishId
+          ? _value.dishId
+          : dishId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AddDishMenuEvent implements _AddDishMenuEvent {
+  const _$_AddDishMenuEvent({required this.dishId});
+
+  @override
+  final int dishId;
+
+  @override
+  String toString() {
+    return 'MenuEvent.addDish(dishId: $dishId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AddDishMenuEvent &&
+            (identical(other.dishId, dishId) || other.dishId == dishId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, dishId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AddDishMenuEventCopyWith<_$_AddDishMenuEvent> get copyWith =>
+      __$$_AddDishMenuEventCopyWithImpl<_$_AddDishMenuEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function(Day day) changeCurrentDay,
+    required TResult Function(int dishId) addDish,
+  }) {
+    return addDish(dishId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetch,
+    TResult? Function(Day day)? changeCurrentDay,
+    TResult? Function(int dishId)? addDish,
+  }) {
+    return addDish?.call(dishId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(Day day)? changeCurrentDay,
+    TResult Function(int dishId)? addDish,
+    required TResult orElse(),
+  }) {
+    if (addDish != null) {
+      return addDish(dishId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchMenuEvent value) fetch,
+    required TResult Function(_ChangeCurrentDayMenuEvent value)
+        changeCurrentDay,
+    required TResult Function(_AddDishMenuEvent value) addDish,
+  }) {
+    return addDish(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchMenuEvent value)? fetch,
+    TResult? Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
+    TResult? Function(_AddDishMenuEvent value)? addDish,
+  }) {
+    return addDish?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchMenuEvent value)? fetch,
+    TResult Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
+    TResult Function(_AddDishMenuEvent value)? addDish,
+    required TResult orElse(),
+  }) {
+    if (addDish != null) {
+      return addDish(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddDishMenuEvent implements MenuEvent {
+  const factory _AddDishMenuEvent({required final int dishId}) =
+      _$_AddDishMenuEvent;
+
+  int get dishId;
+  @JsonKey(ignore: true)
+  _$$_AddDishMenuEventCopyWith<_$_AddDishMenuEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

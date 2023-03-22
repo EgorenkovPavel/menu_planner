@@ -15,6 +15,10 @@ class MenuEvent with _$MenuEvent {
 
   const factory MenuEvent.changeCurrentDay(Day day) =
       _ChangeCurrentDayMenuEvent;
+
+  const factory MenuEvent.addDish({
+    required int dishId,
+  }) = _AddDishMenuEvent;
 }
 
 @freezed
@@ -39,17 +43,14 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
     on<MenuEvent>((event, emitter) => event.map(
           fetch: (event) => _onFetch(event, emitter),
           changeCurrentDay: (event) => _onChangeCurrentDay(event, emitter),
+          addDish: (event) => _onAddDish(event, emitter),
         ));
   }
 
   Future<FutureOr> _onFetch(
       _FetchMenuEvent event, Emitter<MenuState> emit) async {
     final days = await _dataRepository.getCurrentDays();
-    final dishes = await _dataRepository.getDayMenu(
-      state.currentDay.year,
-      state.currentDay.month,
-      state.currentDay.day,
-    );
+    final dishes = await _dataRepository.getDayMenu(state.currentDay);
     emit(MenuState.main(
       days: days,
       dishes: dishes,
@@ -57,11 +58,24 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
     ));
   }
 
-  FutureOr _onChangeCurrentDay(_ChangeCurrentDayMenuEvent event, Emitter<MenuState> emit) {
+  FutureOr _onChangeCurrentDay(
+      _ChangeCurrentDayMenuEvent event, Emitter<MenuState> emit) {
     emit(MenuState.main(
       days: state.days,
       dishes: state.dishes,
       currentDay: event.day,
+    ));
+  }
+
+  FutureOr _onAddDish(_AddDishMenuEvent event, Emitter<MenuState> emit) async {
+    await _dataRepository.addDishToMenu(event.dishId, state.currentDay);
+    final dishes = await _dataRepository.getDayMenu(
+      state.currentDay,
+    );
+    emit(MenuState.main(
+      days: state.days,
+      dishes: dishes,
+      currentDay: state.currentDay,
     ));
   }
 }

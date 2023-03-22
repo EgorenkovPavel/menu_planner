@@ -7,7 +7,7 @@ import '../domain/models/unit.dart';
 
 class DataRepositoryImpl implements DataRepository {
   @override
-  Future<List<Dish>> getDayMenu(int year, int month, int day) async {
+  Future<List<Dish>> getDayMenu(Day day) async {
     return [
       Dish(id: 1, name: 'Pelmeni', ingredients: [
         Ingredient(id: 1, name: 'Testo', unit: Unit('kg')),
@@ -27,5 +27,20 @@ class DataRepositoryImpl implements DataRepository {
       Day(date: DateTime.now().add(Duration(days: 5))),
       Day(date: DateTime.now().add(Duration(days: 6))),
     ];
+  }
+
+  @override
+  Future<List<Dish>> getAllDishes({String search = ''}) async {
+    return [
+      Dish(id: 1, name: 'Pelmeni', ingredients: [
+        Ingredient(id: 1, name: 'Testo', unit: Unit('kg')),
+        Ingredient(id: 2, name: 'Miaso', unit: Unit('kg')),
+      ]),
+    ];
+  }
+
+  @override
+  Future<void> addDishToMenu(int DishId, Day day) async {
+
   }
 }
