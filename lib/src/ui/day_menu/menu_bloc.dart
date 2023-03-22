@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../domain/models/dish.dart';
-import '../domain/repositories/data_repository.dart';
-import '../domain/models/day.dart';
+import '../../domain/models/day.dart';
+import '../../domain/models/dish.dart';
+import '../../domain/repositories/data_repository.dart';
 
 part 'menu_bloc.freezed.dart';
 

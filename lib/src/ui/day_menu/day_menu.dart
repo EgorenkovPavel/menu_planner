@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:menu_planner/src/ui/dish_chooser.dart';
-import 'package:menu_planner/src/ui/menu_bloc.dart';
+import 'package:menu_planner/src/ui/dish_chooser/dish_chooser.dart';
 
-import '../di.dart';
-import '../domain/models/day.dart';
+
+import '../../di.dart';
+import '../../domain/models/day.dart';
+import 'menu_bloc.dart';
 
 class DayMenu extends StatelessWidget {
   const DayMenu({Key? key}) : super(key: key);

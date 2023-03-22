@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:menu_planner/src/ui/dish_input_bloc.dart';
 
-import '../di.dart';
-import 'search_bar.dart';
+import '../../di.dart';
+import '../search_bar.dart';
+import 'dish_input_bloc.dart';
 
 class DishInput extends StatelessWidget {
   const DishInput({Key? key}) : super(key: key);

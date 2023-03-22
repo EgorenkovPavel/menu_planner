@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:menu_planner/src/ui/dish_chooser_bloc.dart';
-import 'package:menu_planner/src/ui/dish_input.dart';
+import 'package:menu_planner/src/ui/dish_input/dish_input.dart';
 
-import '../di.dart';
-import 'search_bar.dart';
+import '../../di.dart';
+import '../search_bar.dart';
+import 'dish_chooser_bloc.dart';
 
 class DishChooser extends StatelessWidget {
   const DishChooser({Key? key}) : super(key: key);
