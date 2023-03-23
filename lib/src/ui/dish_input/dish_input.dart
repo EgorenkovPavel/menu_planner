@@ -4,7 +4,6 @@ import 'package:menu_planner/src/domain/models/ingredient.dart';
 import 'package:menu_planner/src/ui/choose_panel.dart';
 
 import '../../di.dart';
-import '../search_bar.dart';
 import 'dish_input_bloc.dart';
 
 class DishInput extends StatelessWidget {
@@ -29,24 +28,55 @@ class DishInput extends StatelessWidget {
                     decoration: InputDecoration(
                       label: Text('Name'),
                     ),
+                    onChanged: (text) => context
+                        .read<DishInputBloc>()
+                        .add(DishInputEvent.changeName(name: text)),
                   ),
                   Divider(),
-                  BlocBuilder<DishInputBloc, DishInputState>(
-                    builder: (context, state) {
-                      return Expanded(
-                        child: ChoosePanel<Ingredient>(listTileBuilder: (ingredient) => ListTile(
+                  Wrap(
+                      children: context
+                          .watch<DishInputBloc>()
+                          .state
+                          .dishIngredients
+                          .map((e) => Chip(
+                                label: Text(e.name),
+                              ))
+                          .toList()),
+                  Divider(),
+                  BlocConsumer<DishInputBloc, DishInputState>(
+                      builder: (context, state) {
+                    return Expanded(
+                      child: ChoosePanel<Ingredient>(
+                        listTileBuilder: (ingredient) => ListTile(
                           title: Text(ingredient.name),
-                        ), items: state.ingredients,
-                          onSearchChange: (text) => context
-                              .read<DishInputBloc>()
-                              .add(DishInputEvent.search(text)),
+                          onTap: () => context.read<DishInputBloc>().add(
+                              DishInputEvent.addIngredient(
+                                  ingredient: ingredient)),
                         ),
-                      );
+                        items: state.ingredients,
+                        onSearchChange: (text) => context
+                            .read<DishInputBloc>()
+                            .add(DishInputEvent.search(text)),
+                      ),
+                    );
+                  }, listener: (context, state) {
+                    if (state.dishId != null) {
+                      Navigator.of(context).pop(state.dishId);
                     }
-                  ),
+                  }),
                 ],
               ),
             ),
+            persistentFooterButtons: [
+              TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text('Cancel')),
+              ElevatedButton(
+                  onPressed: () => context
+                      .read<DishInputBloc>()
+                      .add(DishInputEvent.save()),
+                  child: Text('OK'))
+            ],
           );
         },
       ),

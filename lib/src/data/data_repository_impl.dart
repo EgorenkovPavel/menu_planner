@@ -2,18 +2,43 @@ import 'package:menu_planner/src/domain/models/day.dart';
 import 'package:menu_planner/src/domain/models/dish.dart';
 import 'package:menu_planner/src/domain/models/ingredient.dart';
 import 'package:menu_planner/src/domain/repositories/data_repository.dart';
+import 'package:uuid/uuid.dart';
 
 import '../domain/models/unit.dart';
 
 class DataRepositoryImpl implements DataRepository {
+  Map<Day, List<Dish>> menu = {};
+
+  List<Dish> dishes = [];
+  List<Ingredient> ingredients = [];
+
+  DataRepositoryImpl() {
+
+    final testo = Ingredient(id: Uuid(), name: 'Testo', unit: Unit('kg'));
+    ingredients.add(testo);
+
+    final miaso = Ingredient(id: Uuid(), name: 'Miaso', unit: Unit('kg'));
+    ingredients.add(miaso);
+
+    final pelmeni = Dish(id: Uuid(), name: 'Pelmeni', ingredients: {
+      testo,
+      miaso,
+    });
+
+    dishes.add(pelmeni);
+
+    final kotleta =  Dish(id: Uuid(), name: 'Kotleta', ingredients: {
+      miaso,
+    });
+
+    dishes.add(kotleta);
+
+    menu[Day(date: DateTime.now())] = [pelmeni];
+  }
+
   @override
   Future<List<Dish>> getDayMenu(Day day) async {
-    return [
-      Dish(id: 1, name: 'Pelmeni', ingredients: [
-        Ingredient(id: 1, name: 'Testo', unit: Unit('kg')),
-        Ingredient(id: 2, name: 'Miaso', unit: Unit('kg')),
-      ]),
-    ];
+    return (menu[day] ?? []).toList();
   }
 
   @override
@@ -31,24 +56,31 @@ class DataRepositoryImpl implements DataRepository {
 
   @override
   Future<List<Dish>> getAllDishes({String search = ''}) async {
-    return [
-      Dish(id: 1, name: 'Pelmeni', ingredients: [
-        Ingredient(id: 1, name: 'Testo', unit: Unit('kg')),
-        Ingredient(id: 2, name: 'Miaso', unit: Unit('kg')),
-      ]),
-    ];
+    return dishes;
   }
 
   @override
-  Future<void> addDishToMenu(int DishId, Day day) async {
-
+  Future<void> addDishToMenu(Uuid dishId, Day day) async {
+    final dish = dishes.firstWhere((dish) => dish.id == dishId);
+    menu[day] = (menu[day] ?? [])..add(dish);
   }
 
   @override
   Future<List<Ingredient>> getAllIngredients({String search = ''}) async {
-    return [
-      Ingredient(id: 1, name: 'Testo', unit: Unit('kg')),
-      Ingredient(id: 2, name: 'Miaso', unit: Unit('kg')),
-    ];
+    return ingredients;
+  }
+
+  @override
+  Future<Uuid> addDish({
+    required String name,
+    required Set<Ingredient> ingredients,
+  }) async {
+    final dish = Dish(
+      id: Uuid(),
+      name: name,
+      ingredients: ingredients,
+    );
+    dishes.add(dish);
+    return dish.id;
   }
 }

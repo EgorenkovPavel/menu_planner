@@ -5,7 +5,6 @@ import 'package:menu_planner/src/ui/dish_input/dish_input.dart';
 
 import '../../di.dart';
 import '../../domain/models/dish.dart';
-import '../search_bar.dart';
 import 'dish_chooser_bloc.dart';
 
 class DishChooser extends StatelessWidget {

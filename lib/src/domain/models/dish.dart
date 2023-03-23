@@ -1,13 +1,19 @@
+import 'package:equatable/equatable.dart';
+import 'package:uuid/uuid.dart';
+
 import 'ingredient.dart';
 
-class Dish {
-  final int id;
+class Dish extends Equatable{
+  final Uuid id;
   final String name;
-  final List<Ingredient> ingredients;
+  final Set<Ingredient> ingredients;
 
   Dish({
     required this.id,
     required this.name,
     required this.ingredients,
   });
+
+  @override
+  List<Object?> get props => [id, name, ingredients];
 }

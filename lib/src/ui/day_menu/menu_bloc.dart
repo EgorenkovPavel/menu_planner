@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../domain/models/day.dart';
 import '../../domain/models/dish.dart';
@@ -17,7 +18,7 @@ class MenuEvent with _$MenuEvent {
       _ChangeCurrentDayMenuEvent;
 
   const factory MenuEvent.addDish({
-    required int dishId,
+    required Uuid dishId,
   }) = _AddDishMenuEvent;
 }
 
@@ -47,8 +48,10 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
         ));
   }
 
-  Future<FutureOr> _onFetch(
-      _FetchMenuEvent event, Emitter<MenuState> emit) async {
+  FutureOr _onFetch(
+    _FetchMenuEvent event,
+    Emitter<MenuState> emit,
+  ) async {
     final days = await _dataRepository.getCurrentDays();
     final dishes = await _dataRepository.getDayMenu(state.currentDay);
     emit(MenuState.main(
@@ -59,19 +62,23 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
   }
 
   FutureOr _onChangeCurrentDay(
-      _ChangeCurrentDayMenuEvent event, Emitter<MenuState> emit) {
+    _ChangeCurrentDayMenuEvent event,
+    Emitter<MenuState> emit,
+  ) async {
+    final dishes = await _dataRepository.getDayMenu(event.day);
     emit(MenuState.main(
       days: state.days,
-      dishes: state.dishes,
+      dishes: dishes,
       currentDay: event.day,
     ));
   }
 
-  FutureOr _onAddDish(_AddDishMenuEvent event, Emitter<MenuState> emit) async {
+  FutureOr _onAddDish(
+    _AddDishMenuEvent event,
+    Emitter<MenuState> emit,
+  ) async {
     await _dataRepository.addDishToMenu(event.dishId, state.currentDay);
-    final dishes = await _dataRepository.getDayMenu(
-      state.currentDay,
-    );
+    final dishes = await _dataRepository.getDayMenu(state.currentDay);
     emit(MenuState.main(
       days: state.days,
       dishes: dishes,

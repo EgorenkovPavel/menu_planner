@@ -12,7 +12,7 @@ class DayMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<MenuBloc>(
       create: (context) =>
           MenuBloc(dataRepository: sl())..add(MenuEvent.fetch()),
       child: Builder(
@@ -44,6 +44,7 @@ class DayMenu extends StatelessWidget {
                         itemBuilder: (context, index) {
                           final dish = state.dishes[index];
                           return ListTile(
+                            key: ValueKey(dish.id),
                             title: Text(dish.name),
                           );
                         },
