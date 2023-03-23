@@ -24,6 +24,9 @@ class DishInputEvent with _$DishInputEvent {
 
   const factory DishInputEvent.addIngredientById({required Uuid ingredientId}) =
       _AddIngredientByIdDishInputEvent;
+
+  const factory DishInputEvent.removeIngredient(
+      {required Ingredient ingredient}) = _RemoveIngredientDishInputEvent;
 }
 
 @freezed
@@ -54,7 +57,7 @@ class DishInputBloc extends Bloc<DishInputEvent, DishInputState> {
 
   DishInputBloc({required DataRepository dataRepository})
       : _dataRepository = dataRepository,
-        super(DishInputState.main(
+        super(const DishInputState.main(
           name: '',
           ingredients: [],
           dishIngredients: {},
@@ -66,6 +69,7 @@ class DishInputBloc extends Bloc<DishInputEvent, DishInputState> {
           save: (event) => _onSave(event, emitter),
           changeName: (event) => _onChangeName(event, emitter),
           addIngredientById: (event) => _onAddIngredientById(event, emitter),
+          removeIngredient: (event) => _onRemoveIngredient(event, emitter),
         ));
   }
 
@@ -136,11 +140,23 @@ class DishInputBloc extends Bloc<DishInputEvent, DishInputState> {
     _AddIngredientByIdDishInputEvent event,
     Emitter<DishInputState> emit,
   ) async {
-    final ingredient = await _dataRepository.getIngredientById(ingredientId: event.ingredientId);
+    final ingredient = await _dataRepository.getIngredientById(
+        ingredientId: event.ingredientId);
     emit(DishInputState.main(
       name: state.name,
       ingredients: state.ingredients,
       dishIngredients: state.dishIngredients.toSet()..add(ingredient),
+    ));
+  }
+
+  FutureOr _onRemoveIngredient(
+    _RemoveIngredientDishInputEvent event,
+    Emitter<DishInputState> emit,
+  ) {
+    emit(DishInputState.main(
+      name: state.name,
+      ingredients: state.ingredients,
+      dishIngredients: state.dishIngredients.toSet()..remove(event.ingredient),
     ));
   }
 }

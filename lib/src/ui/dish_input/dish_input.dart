@@ -10,64 +10,64 @@ import 'dish_input_bloc.dart';
 class DishInput extends StatelessWidget {
   const DishInput({Key? key}) : super(key: key);
 
+  Future<void> _onAddPressed(BuildContext context) async {
+    final ingredientId = await Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => const IngredientInput()));
+    if (ingredientId != null) {
+      context
+          .read<DishInputBloc>()
+          .add(DishInputEvent.addIngredientById(ingredientId: ingredientId));
+    }
+  }
+
+  void _onNameChanged(BuildContext context, String text) {
+    context.read<DishInputBloc>().add(DishInputEvent.changeName(name: text));
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          DishInputBloc(dataRepository: sl())..add(DishInputEvent.fetch()),
+      create: (context) => DishInputBloc(dataRepository: sl())
+        ..add(const DishInputEvent.fetch()),
       child: Builder(
         builder: (context) {
           return Scaffold(
             appBar: AppBar(
-              title: Text('Input dish'),
+              title: const Text('Input dish'),
             ),
             body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       label: Text('Name'),
                     ),
-                    onChanged: (text) => context
-                        .read<DishInputBloc>()
-                        .add(DishInputEvent.changeName(name: text)),
+                    onChanged: (text) => _onNameChanged(context, text),
                   ),
-                  Divider(),
+                  const SizedBox(height: 8),
                   Wrap(
                       children: context
                           .watch<DishInputBloc>()
                           .state
                           .dishIngredients
-                          .map((e) => Chip(
-                                label: Text(e.name),
+                          .map((ingredient) => DishIngredientTile(
+                                ingredient: ingredient,
                               ))
                           .toList()),
-                  Divider(),
+                  const SizedBox(height: 8),
                   BlocConsumer<DishInputBloc, DishInputState>(
                       builder: (context, state) {
                     return Expanded(
                       child: ChoosePanel<Ingredient>(
-                        listTileBuilder: (ingredient) => ListTile(
-                          title: Text(ingredient.name),
-                          onTap: () => context.read<DishInputBloc>().add(
-                              DishInputEvent.addIngredient(
-                                  ingredient: ingredient)),
-                        ),
+                        listTileBuilder: (ingredient) =>
+                            IngredientTile(ingredient: ingredient),
                         items: state.ingredients,
                         onSearchChange: (text) => context
                             .read<DishInputBloc>()
                             .add(DishInputEvent.search(text)),
-                        onAdd: () async {
-                          final ingredientId = await Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) => IngredientInput()));
-                          if (ingredientId != null) {
-                            context.read<DishInputBloc>().add(
-                                DishInputEvent.addIngredientById(
-                                    ingredientId: ingredientId));
-                          }
-                        },
+                        onAdd: () => _onAddPressed(context),
                       ),
                     );
                   }, listener: (context, state) {
@@ -81,15 +81,57 @@ class DishInput extends StatelessWidget {
             persistentFooterButtons: [
               TextButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: Text('Cancel')),
+                  child: const Text('Cancel')),
               ElevatedButton(
-                  onPressed: () =>
-                      context.read<DishInputBloc>().add(DishInputEvent.save()),
-                  child: Text('OK'))
+                  onPressed: () => context
+                      .read<DishInputBloc>()
+                      .add(const DishInputEvent.save()),
+                  child: const Text('OK'))
             ],
           );
         },
       ),
+    );
+  }
+}
+
+class DishIngredientTile extends StatelessWidget {
+  const DishIngredientTile({
+    super.key,
+    required this.ingredient,
+  });
+
+  final Ingredient ingredient;
+
+  @override
+  Widget build(BuildContext context) {
+    return InputChip(
+      label: Text(ingredient.name),
+      onDeleted: () {
+        context
+            .read<DishInputBloc>()
+            .add(DishInputEvent.removeIngredient(ingredient: ingredient));
+      },
+      deleteIcon: const Icon(Icons.cancel),
+    );
+  }
+}
+
+class IngredientTile extends StatelessWidget {
+  const IngredientTile({
+    super.key,
+    required this.ingredient,
+  });
+
+  final Ingredient ingredient;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(ingredient.name),
+      onTap: () => context
+          .read<DishInputBloc>()
+          .add(DishInputEvent.addIngredient(ingredient: ingredient)),
     );
   }
 }
