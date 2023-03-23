@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:menu_planner/src/domain/models/ingredient.dart';
+import 'package:menu_planner/src/ui/choose_panel.dart';
 
 import '../../di.dart';
 import '../search_bar.dart';
@@ -29,21 +31,19 @@ class DishInput extends StatelessWidget {
                     ),
                   ),
                   Divider(),
-                  SearchBar(
-                      onChange: (text) => context
-                          .read<DishInputBloc>()
-                          .add(DishInputEvent.search(text)),
-                      ),
-                  Divider(),
-                  Expanded(child: BlocBuilder<DishInputBloc, DishInputState>(
-                    builder: (context, state){
-                      return ListView(
-                        children: state.ingredients.map((e) => ListTile(
-                          title: Text(e.name),
-                        )).toList(),
+                  BlocBuilder<DishInputBloc, DishInputState>(
+                    builder: (context, state) {
+                      return Expanded(
+                        child: ChoosePanel<Ingredient>(listTileBuilder: (ingredient) => ListTile(
+                          title: Text(ingredient.name),
+                        ), items: state.ingredients,
+                          onSearchChange: (text) => context
+                              .read<DishInputBloc>()
+                              .add(DishInputEvent.search(text)),
+                        ),
                       );
-                    },
-                  ),),
+                    }
+                  ),
                 ],
               ),
             ),
