@@ -3,6 +3,7 @@ import 'package:uuid/uuid.dart';
 
 import '../models/day.dart';
 import '../models/dish.dart';
+import '../models/unit.dart';
 
 abstract class DataRepository {
   Future<List<Dish>> getDayMenu(Day day);
@@ -19,4 +20,12 @@ abstract class DataRepository {
     required String name,
     required Set<Ingredient> ingredients,
   });
+
+  Future<Ingredient> getIngredientById({required Uuid ingredientId});
+
+  Future<List<Unit>> getAllUnits();
+
+  Future<Unit> addUnit({required String name});
+
+  Future<Uuid> addIngredient({required String name, required Unit unit});
 }

@@ -23,6 +23,7 @@ mixin _$DishInputEvent {
     required TResult Function(Ingredient ingredient) addIngredient,
     required TResult Function() save,
     required TResult Function(String name) changeName,
+    required TResult Function(Uuid ingredientId) addIngredientById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$DishInputEvent {
     TResult? Function(Ingredient ingredient)? addIngredient,
     TResult? Function()? save,
     TResult? Function(String name)? changeName,
+    TResult? Function(Uuid ingredientId)? addIngredientById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$DishInputEvent {
     TResult Function(Ingredient ingredient)? addIngredient,
     TResult Function()? save,
     TResult Function(String name)? changeName,
+    TResult Function(Uuid ingredientId)? addIngredientById,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,8 @@ mixin _$DishInputEvent {
     required TResult Function(_AddIngredientDishInputEvent value) addIngredient,
     required TResult Function(_SaveDishInputEvent value) save,
     required TResult Function(_ChangeNameDishInputEvent value) changeName,
+    required TResult Function(_AddIngredientByIdDishInputEvent value)
+        addIngredientById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +65,8 @@ mixin _$DishInputEvent {
     TResult? Function(_AddIngredientDishInputEvent value)? addIngredient,
     TResult? Function(_SaveDishInputEvent value)? save,
     TResult? Function(_ChangeNameDishInputEvent value)? changeName,
+    TResult? Function(_AddIngredientByIdDishInputEvent value)?
+        addIngredientById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +76,7 @@ mixin _$DishInputEvent {
     TResult Function(_AddIngredientDishInputEvent value)? addIngredient,
     TResult Function(_SaveDishInputEvent value)? save,
     TResult Function(_ChangeNameDishInputEvent value)? changeName,
+    TResult Function(_AddIngredientByIdDishInputEvent value)? addIngredientById,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,6 +143,7 @@ class _$_FetchDishInputEvent implements _FetchDishInputEvent {
     required TResult Function(Ingredient ingredient) addIngredient,
     required TResult Function() save,
     required TResult Function(String name) changeName,
+    required TResult Function(Uuid ingredientId) addIngredientById,
   }) {
     return fetch();
   }
@@ -147,6 +156,7 @@ class _$_FetchDishInputEvent implements _FetchDishInputEvent {
     TResult? Function(Ingredient ingredient)? addIngredient,
     TResult? Function()? save,
     TResult? Function(String name)? changeName,
+    TResult? Function(Uuid ingredientId)? addIngredientById,
   }) {
     return fetch?.call();
   }
@@ -159,6 +169,7 @@ class _$_FetchDishInputEvent implements _FetchDishInputEvent {
     TResult Function(Ingredient ingredient)? addIngredient,
     TResult Function()? save,
     TResult Function(String name)? changeName,
+    TResult Function(Uuid ingredientId)? addIngredientById,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -175,6 +186,8 @@ class _$_FetchDishInputEvent implements _FetchDishInputEvent {
     required TResult Function(_AddIngredientDishInputEvent value) addIngredient,
     required TResult Function(_SaveDishInputEvent value) save,
     required TResult Function(_ChangeNameDishInputEvent value) changeName,
+    required TResult Function(_AddIngredientByIdDishInputEvent value)
+        addIngredientById,
   }) {
     return fetch(this);
   }
@@ -187,6 +200,8 @@ class _$_FetchDishInputEvent implements _FetchDishInputEvent {
     TResult? Function(_AddIngredientDishInputEvent value)? addIngredient,
     TResult? Function(_SaveDishInputEvent value)? save,
     TResult? Function(_ChangeNameDishInputEvent value)? changeName,
+    TResult? Function(_AddIngredientByIdDishInputEvent value)?
+        addIngredientById,
   }) {
     return fetch?.call(this);
   }
@@ -199,6 +214,7 @@ class _$_FetchDishInputEvent implements _FetchDishInputEvent {
     TResult Function(_AddIngredientDishInputEvent value)? addIngredient,
     TResult Function(_SaveDishInputEvent value)? save,
     TResult Function(_ChangeNameDishInputEvent value)? changeName,
+    TResult Function(_AddIngredientByIdDishInputEvent value)? addIngredientById,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -282,6 +298,7 @@ class _$_SearchDishInputEvent implements _SearchDishInputEvent {
     required TResult Function(Ingredient ingredient) addIngredient,
     required TResult Function() save,
     required TResult Function(String name) changeName,
+    required TResult Function(Uuid ingredientId) addIngredientById,
   }) {
     return search(text);
   }
@@ -294,6 +311,7 @@ class _$_SearchDishInputEvent implements _SearchDishInputEvent {
     TResult? Function(Ingredient ingredient)? addIngredient,
     TResult? Function()? save,
     TResult? Function(String name)? changeName,
+    TResult? Function(Uuid ingredientId)? addIngredientById,
   }) {
     return search?.call(text);
   }
@@ -306,6 +324,7 @@ class _$_SearchDishInputEvent implements _SearchDishInputEvent {
     TResult Function(Ingredient ingredient)? addIngredient,
     TResult Function()? save,
     TResult Function(String name)? changeName,
+    TResult Function(Uuid ingredientId)? addIngredientById,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -322,6 +341,8 @@ class _$_SearchDishInputEvent implements _SearchDishInputEvent {
     required TResult Function(_AddIngredientDishInputEvent value) addIngredient,
     required TResult Function(_SaveDishInputEvent value) save,
     required TResult Function(_ChangeNameDishInputEvent value) changeName,
+    required TResult Function(_AddIngredientByIdDishInputEvent value)
+        addIngredientById,
   }) {
     return search(this);
   }
@@ -334,6 +355,8 @@ class _$_SearchDishInputEvent implements _SearchDishInputEvent {
     TResult? Function(_AddIngredientDishInputEvent value)? addIngredient,
     TResult? Function(_SaveDishInputEvent value)? save,
     TResult? Function(_ChangeNameDishInputEvent value)? changeName,
+    TResult? Function(_AddIngredientByIdDishInputEvent value)?
+        addIngredientById,
   }) {
     return search?.call(this);
   }
@@ -346,6 +369,7 @@ class _$_SearchDishInputEvent implements _SearchDishInputEvent {
     TResult Function(_AddIngredientDishInputEvent value)? addIngredient,
     TResult Function(_SaveDishInputEvent value)? save,
     TResult Function(_ChangeNameDishInputEvent value)? changeName,
+    TResult Function(_AddIngredientByIdDishInputEvent value)? addIngredientById,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -438,6 +462,7 @@ class _$_AddIngredientDishInputEvent implements _AddIngredientDishInputEvent {
     required TResult Function(Ingredient ingredient) addIngredient,
     required TResult Function() save,
     required TResult Function(String name) changeName,
+    required TResult Function(Uuid ingredientId) addIngredientById,
   }) {
     return addIngredient(ingredient);
   }
@@ -450,6 +475,7 @@ class _$_AddIngredientDishInputEvent implements _AddIngredientDishInputEvent {
     TResult? Function(Ingredient ingredient)? addIngredient,
     TResult? Function()? save,
     TResult? Function(String name)? changeName,
+    TResult? Function(Uuid ingredientId)? addIngredientById,
   }) {
     return addIngredient?.call(ingredient);
   }
@@ -462,6 +488,7 @@ class _$_AddIngredientDishInputEvent implements _AddIngredientDishInputEvent {
     TResult Function(Ingredient ingredient)? addIngredient,
     TResult Function()? save,
     TResult Function(String name)? changeName,
+    TResult Function(Uuid ingredientId)? addIngredientById,
     required TResult orElse(),
   }) {
     if (addIngredient != null) {
@@ -478,6 +505,8 @@ class _$_AddIngredientDishInputEvent implements _AddIngredientDishInputEvent {
     required TResult Function(_AddIngredientDishInputEvent value) addIngredient,
     required TResult Function(_SaveDishInputEvent value) save,
     required TResult Function(_ChangeNameDishInputEvent value) changeName,
+    required TResult Function(_AddIngredientByIdDishInputEvent value)
+        addIngredientById,
   }) {
     return addIngredient(this);
   }
@@ -490,6 +519,8 @@ class _$_AddIngredientDishInputEvent implements _AddIngredientDishInputEvent {
     TResult? Function(_AddIngredientDishInputEvent value)? addIngredient,
     TResult? Function(_SaveDishInputEvent value)? save,
     TResult? Function(_ChangeNameDishInputEvent value)? changeName,
+    TResult? Function(_AddIngredientByIdDishInputEvent value)?
+        addIngredientById,
   }) {
     return addIngredient?.call(this);
   }
@@ -502,6 +533,7 @@ class _$_AddIngredientDishInputEvent implements _AddIngredientDishInputEvent {
     TResult Function(_AddIngredientDishInputEvent value)? addIngredient,
     TResult Function(_SaveDishInputEvent value)? save,
     TResult Function(_ChangeNameDishInputEvent value)? changeName,
+    TResult Function(_AddIngredientByIdDishInputEvent value)? addIngredientById,
     required TResult orElse(),
   }) {
     if (addIngredient != null) {
@@ -564,6 +596,7 @@ class _$_SaveDishInputEvent implements _SaveDishInputEvent {
     required TResult Function(Ingredient ingredient) addIngredient,
     required TResult Function() save,
     required TResult Function(String name) changeName,
+    required TResult Function(Uuid ingredientId) addIngredientById,
   }) {
     return save();
   }
@@ -576,6 +609,7 @@ class _$_SaveDishInputEvent implements _SaveDishInputEvent {
     TResult? Function(Ingredient ingredient)? addIngredient,
     TResult? Function()? save,
     TResult? Function(String name)? changeName,
+    TResult? Function(Uuid ingredientId)? addIngredientById,
   }) {
     return save?.call();
   }
@@ -588,6 +622,7 @@ class _$_SaveDishInputEvent implements _SaveDishInputEvent {
     TResult Function(Ingredient ingredient)? addIngredient,
     TResult Function()? save,
     TResult Function(String name)? changeName,
+    TResult Function(Uuid ingredientId)? addIngredientById,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -604,6 +639,8 @@ class _$_SaveDishInputEvent implements _SaveDishInputEvent {
     required TResult Function(_AddIngredientDishInputEvent value) addIngredient,
     required TResult Function(_SaveDishInputEvent value) save,
     required TResult Function(_ChangeNameDishInputEvent value) changeName,
+    required TResult Function(_AddIngredientByIdDishInputEvent value)
+        addIngredientById,
   }) {
     return save(this);
   }
@@ -616,6 +653,8 @@ class _$_SaveDishInputEvent implements _SaveDishInputEvent {
     TResult? Function(_AddIngredientDishInputEvent value)? addIngredient,
     TResult? Function(_SaveDishInputEvent value)? save,
     TResult? Function(_ChangeNameDishInputEvent value)? changeName,
+    TResult? Function(_AddIngredientByIdDishInputEvent value)?
+        addIngredientById,
   }) {
     return save?.call(this);
   }
@@ -628,6 +667,7 @@ class _$_SaveDishInputEvent implements _SaveDishInputEvent {
     TResult Function(_AddIngredientDishInputEvent value)? addIngredient,
     TResult Function(_SaveDishInputEvent value)? save,
     TResult Function(_ChangeNameDishInputEvent value)? changeName,
+    TResult Function(_AddIngredientByIdDishInputEvent value)? addIngredientById,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -712,6 +752,7 @@ class _$_ChangeNameDishInputEvent implements _ChangeNameDishInputEvent {
     required TResult Function(Ingredient ingredient) addIngredient,
     required TResult Function() save,
     required TResult Function(String name) changeName,
+    required TResult Function(Uuid ingredientId) addIngredientById,
   }) {
     return changeName(name);
   }
@@ -724,6 +765,7 @@ class _$_ChangeNameDishInputEvent implements _ChangeNameDishInputEvent {
     TResult? Function(Ingredient ingredient)? addIngredient,
     TResult? Function()? save,
     TResult? Function(String name)? changeName,
+    TResult? Function(Uuid ingredientId)? addIngredientById,
   }) {
     return changeName?.call(name);
   }
@@ -736,6 +778,7 @@ class _$_ChangeNameDishInputEvent implements _ChangeNameDishInputEvent {
     TResult Function(Ingredient ingredient)? addIngredient,
     TResult Function()? save,
     TResult Function(String name)? changeName,
+    TResult Function(Uuid ingredientId)? addIngredientById,
     required TResult orElse(),
   }) {
     if (changeName != null) {
@@ -752,6 +795,8 @@ class _$_ChangeNameDishInputEvent implements _ChangeNameDishInputEvent {
     required TResult Function(_AddIngredientDishInputEvent value) addIngredient,
     required TResult Function(_SaveDishInputEvent value) save,
     required TResult Function(_ChangeNameDishInputEvent value) changeName,
+    required TResult Function(_AddIngredientByIdDishInputEvent value)
+        addIngredientById,
   }) {
     return changeName(this);
   }
@@ -764,6 +809,8 @@ class _$_ChangeNameDishInputEvent implements _ChangeNameDishInputEvent {
     TResult? Function(_AddIngredientDishInputEvent value)? addIngredient,
     TResult? Function(_SaveDishInputEvent value)? save,
     TResult? Function(_ChangeNameDishInputEvent value)? changeName,
+    TResult? Function(_AddIngredientByIdDishInputEvent value)?
+        addIngredientById,
   }) {
     return changeName?.call(this);
   }
@@ -776,6 +823,7 @@ class _$_ChangeNameDishInputEvent implements _ChangeNameDishInputEvent {
     TResult Function(_AddIngredientDishInputEvent value)? addIngredient,
     TResult Function(_SaveDishInputEvent value)? save,
     TResult Function(_ChangeNameDishInputEvent value)? changeName,
+    TResult Function(_AddIngredientByIdDishInputEvent value)? addIngredientById,
     required TResult orElse(),
   }) {
     if (changeName != null) {
@@ -792,6 +840,174 @@ abstract class _ChangeNameDishInputEvent implements DishInputEvent {
   String get name;
   @JsonKey(ignore: true)
   _$$_ChangeNameDishInputEventCopyWith<_$_ChangeNameDishInputEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_AddIngredientByIdDishInputEventCopyWith<$Res> {
+  factory _$$_AddIngredientByIdDishInputEventCopyWith(
+          _$_AddIngredientByIdDishInputEvent value,
+          $Res Function(_$_AddIngredientByIdDishInputEvent) then) =
+      __$$_AddIngredientByIdDishInputEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Uuid ingredientId});
+}
+
+/// @nodoc
+class __$$_AddIngredientByIdDishInputEventCopyWithImpl<$Res>
+    extends _$DishInputEventCopyWithImpl<$Res,
+        _$_AddIngredientByIdDishInputEvent>
+    implements _$$_AddIngredientByIdDishInputEventCopyWith<$Res> {
+  __$$_AddIngredientByIdDishInputEventCopyWithImpl(
+      _$_AddIngredientByIdDishInputEvent _value,
+      $Res Function(_$_AddIngredientByIdDishInputEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ingredientId = null,
+  }) {
+    return _then(_$_AddIngredientByIdDishInputEvent(
+      ingredientId: null == ingredientId
+          ? _value.ingredientId
+          : ingredientId // ignore: cast_nullable_to_non_nullable
+              as Uuid,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AddIngredientByIdDishInputEvent
+    implements _AddIngredientByIdDishInputEvent {
+  const _$_AddIngredientByIdDishInputEvent({required this.ingredientId});
+
+  @override
+  final Uuid ingredientId;
+
+  @override
+  String toString() {
+    return 'DishInputEvent.addIngredientById(ingredientId: $ingredientId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AddIngredientByIdDishInputEvent &&
+            (identical(other.ingredientId, ingredientId) ||
+                other.ingredientId == ingredientId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, ingredientId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AddIngredientByIdDishInputEventCopyWith<
+          _$_AddIngredientByIdDishInputEvent>
+      get copyWith => __$$_AddIngredientByIdDishInputEventCopyWithImpl<
+          _$_AddIngredientByIdDishInputEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function(String text) search,
+    required TResult Function(Ingredient ingredient) addIngredient,
+    required TResult Function() save,
+    required TResult Function(String name) changeName,
+    required TResult Function(Uuid ingredientId) addIngredientById,
+  }) {
+    return addIngredientById(ingredientId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetch,
+    TResult? Function(String text)? search,
+    TResult? Function(Ingredient ingredient)? addIngredient,
+    TResult? Function()? save,
+    TResult? Function(String name)? changeName,
+    TResult? Function(Uuid ingredientId)? addIngredientById,
+  }) {
+    return addIngredientById?.call(ingredientId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(String text)? search,
+    TResult Function(Ingredient ingredient)? addIngredient,
+    TResult Function()? save,
+    TResult Function(String name)? changeName,
+    TResult Function(Uuid ingredientId)? addIngredientById,
+    required TResult orElse(),
+  }) {
+    if (addIngredientById != null) {
+      return addIngredientById(ingredientId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchDishInputEvent value) fetch,
+    required TResult Function(_SearchDishInputEvent value) search,
+    required TResult Function(_AddIngredientDishInputEvent value) addIngredient,
+    required TResult Function(_SaveDishInputEvent value) save,
+    required TResult Function(_ChangeNameDishInputEvent value) changeName,
+    required TResult Function(_AddIngredientByIdDishInputEvent value)
+        addIngredientById,
+  }) {
+    return addIngredientById(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchDishInputEvent value)? fetch,
+    TResult? Function(_SearchDishInputEvent value)? search,
+    TResult? Function(_AddIngredientDishInputEvent value)? addIngredient,
+    TResult? Function(_SaveDishInputEvent value)? save,
+    TResult? Function(_ChangeNameDishInputEvent value)? changeName,
+    TResult? Function(_AddIngredientByIdDishInputEvent value)?
+        addIngredientById,
+  }) {
+    return addIngredientById?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchDishInputEvent value)? fetch,
+    TResult Function(_SearchDishInputEvent value)? search,
+    TResult Function(_AddIngredientDishInputEvent value)? addIngredient,
+    TResult Function(_SaveDishInputEvent value)? save,
+    TResult Function(_ChangeNameDishInputEvent value)? changeName,
+    TResult Function(_AddIngredientByIdDishInputEvent value)? addIngredientById,
+    required TResult orElse(),
+  }) {
+    if (addIngredientById != null) {
+      return addIngredientById(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddIngredientByIdDishInputEvent implements DishInputEvent {
+  const factory _AddIngredientByIdDishInputEvent(
+      {required final Uuid ingredientId}) = _$_AddIngredientByIdDishInputEvent;
+
+  Uuid get ingredientId;
+  @JsonKey(ignore: true)
+  _$$_AddIngredientByIdDishInputEventCopyWith<
+          _$_AddIngredientByIdDishInputEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 

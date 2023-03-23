@@ -11,8 +11,12 @@ class DataRepositoryImpl implements DataRepository {
 
   List<Dish> dishes = [];
   List<Ingredient> ingredients = [];
+  List<Unit> units = [];
 
   DataRepositoryImpl() {
+
+    units.add(Unit('kg'));
+    units.add(Unit('m'));
 
     final testo = Ingredient(id: Uuid(), name: 'Testo', unit: Unit('kg'));
     ingredients.add(testo);
@@ -82,5 +86,29 @@ class DataRepositoryImpl implements DataRepository {
     );
     dishes.add(dish);
     return dish.id;
+  }
+
+  @override
+  Future<Ingredient> getIngredientById({required Uuid ingredientId}) async {
+    return ingredients.firstWhere((element) => element.id == ingredientId);
+  }
+
+  @override
+  Future<List<Unit>> getAllUnits() async {
+    return units;
+  }
+
+  @override
+  Future<Uuid> addIngredient({required String name, required Unit unit}) async {
+    final ingredient = Ingredient(id: Uuid(), name: name, unit: unit);
+    ingredients.add(ingredient);
+    return ingredient.id;
+  }
+
+  @override
+  Future<Unit> addUnit({required String name}) async {
+    final unit = Unit(name);
+    units.add(unit);
+    return unit;
   }
 }

@@ -21,6 +21,9 @@ class DishInputEvent with _$DishInputEvent {
 
   const factory DishInputEvent.changeName({required String name}) =
       _ChangeNameDishInputEvent;
+
+  const factory DishInputEvent.addIngredientById({required Uuid ingredientId}) =
+      _AddIngredientByIdDishInputEvent;
 }
 
 @freezed
@@ -62,6 +65,7 @@ class DishInputBloc extends Bloc<DishInputEvent, DishInputState> {
           addIngredient: (event) => _onAddIngredient(event, emitter),
           save: (event) => _onSave(event, emitter),
           changeName: (event) => _onChangeName(event, emitter),
+          addIngredientById: (event) => _onAddIngredientById(event, emitter),
         ));
   }
 
@@ -125,6 +129,18 @@ class DishInputBloc extends Bloc<DishInputEvent, DishInputState> {
       name: event.name,
       ingredients: state.ingredients,
       dishIngredients: state.dishIngredients,
+    ));
+  }
+
+  FutureOr _onAddIngredientById(
+    _AddIngredientByIdDishInputEvent event,
+    Emitter<DishInputState> emit,
+  ) async {
+    final ingredient = await _dataRepository.getIngredientById(ingredientId: event.ingredientId);
+    emit(DishInputState.main(
+      name: state.name,
+      ingredients: state.ingredients,
+      dishIngredients: state.dishIngredients.toSet()..add(ingredient),
     ));
   }
 }

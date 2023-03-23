@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:menu_planner/src/domain/models/ingredient.dart';
 import 'package:menu_planner/src/ui/choose_panel.dart';
+import 'package:menu_planner/src/ui/ingredient_input/ingredient_input.dart';
 
 import '../../di.dart';
 import 'dish_input_bloc.dart';
@@ -57,6 +58,16 @@ class DishInput extends StatelessWidget {
                         onSearchChange: (text) => context
                             .read<DishInputBloc>()
                             .add(DishInputEvent.search(text)),
+                        onAdd: () async {
+                          final ingredientId = await Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => IngredientInput()));
+                          if (ingredientId != null) {
+                            context.read<DishInputBloc>().add(
+                                DishInputEvent.addIngredientById(
+                                    ingredientId: ingredientId));
+                          }
+                        },
                       ),
                     );
                   }, listener: (context, state) {
@@ -72,9 +83,8 @@ class DishInput extends StatelessWidget {
                   onPressed: () => Navigator.of(context).pop(),
                   child: Text('Cancel')),
               ElevatedButton(
-                  onPressed: () => context
-                      .read<DishInputBloc>()
-                      .add(DishInputEvent.save()),
+                  onPressed: () =>
+                      context.read<DishInputBloc>().add(DishInputEvent.save()),
                   child: Text('OK'))
             ],
           );

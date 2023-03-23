@@ -7,8 +7,8 @@ import '../../di.dart';
 import '../../domain/models/day.dart';
 import 'menu_bloc.dart';
 
-class DayMenu extends StatelessWidget {
-  const DayMenu({Key? key}) : super(key: key);
+class Menu extends StatelessWidget {
+  const Menu({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
