@@ -10,7 +10,9 @@ abstract class DataRepository {
 
   Future<List<Dish>> getAllDishes({String search = ''});
 
-  Future<void> addDishToMenu(Uuid DishId, Day day);
+  Future<void> addDishToMenu(Uuid dishId, Day day);
+
+  Future<void> deleteDishFromMenu(Uuid dishId, Day day);
 
   Future<List<Ingredient>> getAllIngredients({String search = ''});
 

@@ -24,6 +24,9 @@ class MenuEvent with _$MenuEvent {
   const factory MenuEvent.weekBack() = _WeekBackMenuEvent;
 
   const factory MenuEvent.weekForward() = _WeekForwardMenuEvent;
+
+  const factory MenuEvent.deleteDish({required Dish dish}) =
+      _DeleteDishMenuEvent;
 }
 
 @freezed
@@ -51,6 +54,7 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
           addDish: (event) => _onAddDish(event, emitter),
           weekBack: (event) => _onWeekBack(event, emitter),
           weekForward: (event) => _onWeekForward(event, emitter),
+          deleteDish: (event) => _onDeleteDish(event, emitter),
         ));
   }
 
@@ -106,7 +110,8 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
     final days = state.days
         .map((e) => Day(date: e.date.subtract(const Duration(days: 7))))
         .toList();
-    final currentDay = Day(date: state.currentDay.date.subtract(const Duration(days: 7)));
+    final currentDay =
+        Day(date: state.currentDay.date.subtract(const Duration(days: 7)));
     final dishes = await _dataRepository.getDayMenu(currentDay);
     emit(MenuState.main(
       days: days,
@@ -122,12 +127,26 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
     final days = state.days
         .map((e) => Day(date: e.date.add(const Duration(days: 7))))
         .toList();
-    final currentDay = Day(date: state.currentDay.date.add(const Duration(days: 7)));
+    final currentDay =
+        Day(date: state.currentDay.date.add(const Duration(days: 7)));
     final dishes = await _dataRepository.getDayMenu(currentDay);
     emit(MenuState.main(
       days: days,
       dishes: dishes,
       currentDay: currentDay,
+    ));
+  }
+
+  FutureOr _onDeleteDish(
+    _DeleteDishMenuEvent event,
+    Emitter<MenuState> emit,
+  ) async {
+    await _dataRepository.deleteDishFromMenu(event.dish.id, state.currentDay);
+    final dishes = await _dataRepository.getDayMenu(state.currentDay);
+    emit(MenuState.main(
+      days: state.days,
+      dishes: dishes,
+      currentDay: state.currentDay,
     ));
   }
 }

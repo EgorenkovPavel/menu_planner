@@ -53,7 +53,7 @@ class Menu extends StatelessWidget {
                 children: [
                   BlocBuilder<MenuBloc, MenuState>(builder: (context, state) {
                     if (state.days.isEmpty) {
-                      return SizedBox();
+                      return const SizedBox();
                     } else {
                       return Text(
                           DateFormat.MMMM().format(state.days.first.date));
@@ -111,11 +111,33 @@ class DishTile extends StatelessWidget {
 
   final Dish dish;
 
+  void _onLongPressed(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (dialogContext) {
+          return Wrap(
+            children: [
+              ListTile(
+                  leading: const Icon(Icons.delete),
+                  title: const Text('Delete'),
+                  onTap: () {
+                    context
+                        .read<MenuBloc>()
+                        .add(MenuEvent.deleteDish(dish: dish));
+                    Navigator.of(dialogContext).pop();
+                  }),
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(dish.name),
       subtitle: Text(dish.ingredients.map((e) => e.name).join(', ')),
+      onLongPress: () => _onLongPressed(context),
     );
   }
 }

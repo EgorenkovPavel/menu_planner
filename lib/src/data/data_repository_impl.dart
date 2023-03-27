@@ -98,4 +98,9 @@ class DataRepositoryImpl implements DataRepository {
     units.add(unit);
     return unit;
   }
+
+  @override
+  Future<void> deleteDishFromMenu(Uuid dishId, Day day) async {
+    menu[day] = (menu[day] ?? [])..removeWhere((dish) => dish.id == dishId);
+  }
 }
