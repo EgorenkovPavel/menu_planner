@@ -47,15 +47,9 @@ class DataRepositoryImpl implements DataRepository {
 
   @override
   Future<List<Day>> getCurrentDays() async {
-    return [
-      Day(date: DateTime.now()),
-      Day(date: DateTime.now().add(Duration(days: 1))),
-      Day(date: DateTime.now().add(Duration(days: 2))),
-      Day(date: DateTime.now().add(Duration(days: 3))),
-      Day(date: DateTime.now().add(Duration(days: 4))),
-      Day(date: DateTime.now().add(Duration(days: 5))),
-      Day(date: DateTime.now().add(Duration(days: 6))),
-    ];
+    final now = DateTime.now();
+    final weekStart = now.subtract(Duration(days: now.weekday-1));
+    return List.generate(7, (index) => Day(date: weekStart.add(Duration(days: index))));
   }
 
   @override
