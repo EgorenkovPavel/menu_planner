@@ -14,7 +14,6 @@ class DataRepositoryImpl implements DataRepository {
   List<Unit> units = [];
 
   DataRepositoryImpl() {
-
     units.add(Unit('kg'));
     units.add(Unit('m'));
 
@@ -31,7 +30,7 @@ class DataRepositoryImpl implements DataRepository {
 
     dishes.add(pelmeni);
 
-    final kotleta =  Dish(id: Uuid(), name: 'Kotleta', ingredients: {
+    final kotleta = Dish(id: Uuid(), name: 'Kotleta', ingredients: {
       miaso,
     });
 
@@ -102,5 +101,29 @@ class DataRepositoryImpl implements DataRepository {
   @override
   Future<void> deleteDishFromMenu(Uuid dishId, Day day) async {
     menu[day] = (menu[day] ?? [])..removeWhere((dish) => dish.id == dishId);
+  }
+
+  @override
+  Future<Set<Ingredient>> getIngredientsByDateTimeRange({
+    required Day startDay,
+    required Day endDay,
+  }) async {
+    final rangeIngredients = <Ingredient>{};
+    for(final day in _daysInRange(startDay, endDay)){
+      rangeIngredients.addAll((menu[day] ?? []).expand((dish) => dish.ingredients));
+    }
+    return rangeIngredients;
+  }
+
+  Set<Day> _daysInRange(Day startDay, Day endDay){
+    Set<Day> days = {startDay};
+    DateTime day = startDay.date;
+    while(!day.isAtSameMomentAs(endDay.date)){
+      days.add(Day(date: day));
+
+      day = day.add(Duration(days: 1));
+    }
+
+    return days;
   }
 }

@@ -28,4 +28,9 @@ abstract class DataRepository {
   Future<Unit> addUnit({required String name});
 
   Future<Uuid> addIngredient({required String name, required Unit unit});
+
+  Future<Set<Ingredient>> getIngredientsByDateTimeRange({
+    required Day startDay,
+    required Day endDay,
+  });
 }

@@ -6,6 +6,7 @@ import 'package:menu_planner/src/ui/dish_chooser/dish_chooser.dart';
 
 import '../../di.dart';
 import '../../domain/models/day.dart';
+import '../cart/cart.dart';
 import 'day_item.dart';
 import 'menu_bloc.dart';
 
@@ -36,6 +37,10 @@ class Menu extends StatelessWidget {
     context.read<MenuBloc>().add(const MenuEvent.weekForward());
   }
 
+  void _onCartPressed(BuildContext context){
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Cart()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<MenuBloc>(
@@ -46,6 +51,9 @@ class Menu extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               title: const Text('Menu planner'),
+              actions: [
+                IconButton(onPressed: () => _onCartPressed(context), icon: const Icon(Icons.shopping_cart))
+              ],
             ),
             body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
