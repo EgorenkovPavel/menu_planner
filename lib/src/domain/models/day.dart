@@ -10,6 +10,8 @@ class Day extends Equatable{
         month = date.month,
         day = date.day;
 
+  DateTime get date => DateTime(year, month, day);
+
   @override
   List<Object?> get props => [year, month, day];
 

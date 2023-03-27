@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import '../../domain/models/day.dart';
 
 class DayItem extends StatelessWidget {
-  const DayItem(
-      {Key? key, required this.day, required this.isCurrent, this.onPressed})
-      : super(key: key);
+  const DayItem({
+    Key? key,
+    required this.day,
+    required this.isCurrent,
+    this.onPressed,
+  }) : super(key: key);
 
   final Day day;
   final bool isCurrent;
@@ -17,8 +20,8 @@ class DayItem extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         margin: const EdgeInsets.all(4),
-        width: 40,
-        height: 40,
+        width: 32,
+        height: 32,
         alignment: Alignment.center,
         decoration: BoxDecoration(
             border: Border.all(color: Colors.black),

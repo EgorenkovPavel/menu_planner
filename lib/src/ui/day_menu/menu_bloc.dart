@@ -20,6 +20,10 @@ class MenuEvent with _$MenuEvent {
   const factory MenuEvent.addDish({
     required Uuid dishId,
   }) = _AddDishMenuEvent;
+
+  const factory MenuEvent.weekBack() = _WeekBackMenuEvent;
+
+  const factory MenuEvent.weekForward() = _WeekForwardMenuEvent;
 }
 
 @freezed
@@ -45,6 +49,8 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
           fetch: (event) => _onFetch(event, emitter),
           changeCurrentDay: (event) => _onChangeCurrentDay(event, emitter),
           addDish: (event) => _onAddDish(event, emitter),
+          weekBack: (event) => _onWeekBack(event, emitter),
+          weekForward: (event) => _onWeekForward(event, emitter),
         ));
   }
 
@@ -52,7 +58,7 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
     _FetchMenuEvent event,
     Emitter<MenuState> emit,
   ) async {
-    final days = await _dataRepository.getCurrentDays();
+    final days = await _getCurrentDays();
     final dishes = await _dataRepository.getDayMenu(state.currentDay);
     emit(MenuState.main(
       days: days,
@@ -83,6 +89,45 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
       days: state.days,
       dishes: dishes,
       currentDay: state.currentDay,
+    ));
+  }
+
+  Future<List<Day>> _getCurrentDays() async {
+    final now = DateTime.now();
+    final weekStart = now.subtract(Duration(days: now.weekday - 1));
+    return List.generate(
+        7, (index) => Day(date: weekStart.add(Duration(days: index))));
+  }
+
+  FutureOr _onWeekBack(
+    _WeekBackMenuEvent event,
+    Emitter<MenuState> emit,
+  ) async {
+    final days = state.days
+        .map((e) => Day(date: e.date.subtract(const Duration(days: 7))))
+        .toList();
+    final currentDay = Day(date: state.currentDay.date.subtract(const Duration(days: 7)));
+    final dishes = await _dataRepository.getDayMenu(currentDay);
+    emit(MenuState.main(
+      days: days,
+      dishes: dishes,
+      currentDay: currentDay,
+    ));
+  }
+
+  FutureOr _onWeekForward(
+    _WeekForwardMenuEvent event,
+    Emitter<MenuState> emit,
+  ) async {
+    final days = state.days
+        .map((e) => Day(date: e.date.add(const Duration(days: 7))))
+        .toList();
+    final currentDay = Day(date: state.currentDay.date.add(const Duration(days: 7)));
+    final dishes = await _dataRepository.getDayMenu(currentDay);
+    emit(MenuState.main(
+      days: days,
+      dishes: dishes,
+      currentDay: currentDay,
     ));
   }
 }

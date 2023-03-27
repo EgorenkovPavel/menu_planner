@@ -46,13 +46,6 @@ class DataRepositoryImpl implements DataRepository {
   }
 
   @override
-  Future<List<Day>> getCurrentDays() async {
-    final now = DateTime.now();
-    final weekStart = now.subtract(Duration(days: now.weekday-1));
-    return List.generate(7, (index) => Day(date: weekStart.add(Duration(days: index))));
-  }
-
-  @override
   Future<List<Dish>> getAllDishes({String search = ''}) async {
     return dishes;
   }

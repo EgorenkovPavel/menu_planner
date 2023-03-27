@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:menu_planner/src/domain/models/dish.dart';
 import 'package:menu_planner/src/ui/dish_chooser/dish_chooser.dart';
 
@@ -27,6 +28,14 @@ class Menu extends StatelessWidget {
     }
   }
 
+  void _onBackPressed(BuildContext context) {
+    context.read<MenuBloc>().add(const MenuEvent.weekBack());
+  }
+
+  void _onForwardPressed(BuildContext context) {
+    context.read<MenuBloc>().add(const MenuEvent.weekForward());
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<MenuBloc>(
@@ -43,16 +52,30 @@ class Menu extends StatelessWidget {
               child: Column(
                 children: [
                   BlocBuilder<MenuBloc, MenuState>(builder: (context, state) {
+                    if (state.days.isEmpty) {
+                      return SizedBox();
+                    } else {
+                      return Text(
+                          DateFormat.MMMM().format(state.days.first.date));
+                    }
+                  }),
+                  BlocBuilder<MenuBloc, MenuState>(builder: (context, state) {
                     return Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: state.days
-                          .map((day) => DayItem(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                            onPressed: () => _onBackPressed(context),
+                            icon: const Icon(Icons.arrow_back),
+                          ),
+                          ...state.days.map((day) => DayItem(
                                 day: day,
                                 isCurrent: day == state.currentDay,
                                 onPressed: () => _onDayTap(context, day),
-                              ))
-                          .toList(),
-                    );
+                              )),
+                          IconButton(
+                              onPressed: () => _onForwardPressed(context),
+                              icon: const Icon(Icons.arrow_forward)),
+                        ]);
                   }),
                   const Divider(),
                   Expanded(

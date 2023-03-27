@@ -21,6 +21,8 @@ mixin _$MenuEvent {
     required TResult Function() fetch,
     required TResult Function(Day day) changeCurrentDay,
     required TResult Function(Uuid dishId) addDish,
+    required TResult Function() weekBack,
+    required TResult Function() weekForward,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +30,8 @@ mixin _$MenuEvent {
     TResult? Function()? fetch,
     TResult? Function(Day day)? changeCurrentDay,
     TResult? Function(Uuid dishId)? addDish,
+    TResult? Function()? weekBack,
+    TResult? Function()? weekForward,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +39,8 @@ mixin _$MenuEvent {
     TResult Function()? fetch,
     TResult Function(Day day)? changeCurrentDay,
     TResult Function(Uuid dishId)? addDish,
+    TResult Function()? weekBack,
+    TResult Function()? weekForward,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +50,8 @@ mixin _$MenuEvent {
     required TResult Function(_ChangeCurrentDayMenuEvent value)
         changeCurrentDay,
     required TResult Function(_AddDishMenuEvent value) addDish,
+    required TResult Function(_WeekBackMenuEvent value) weekBack,
+    required TResult Function(_WeekForwardMenuEvent value) weekForward,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +59,8 @@ mixin _$MenuEvent {
     TResult? Function(_FetchMenuEvent value)? fetch,
     TResult? Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
     TResult? Function(_AddDishMenuEvent value)? addDish,
+    TResult? Function(_WeekBackMenuEvent value)? weekBack,
+    TResult? Function(_WeekForwardMenuEvent value)? weekForward,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +68,8 @@ mixin _$MenuEvent {
     TResult Function(_FetchMenuEvent value)? fetch,
     TResult Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
     TResult Function(_AddDishMenuEvent value)? addDish,
+    TResult Function(_WeekBackMenuEvent value)? weekBack,
+    TResult Function(_WeekForwardMenuEvent value)? weekForward,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +133,8 @@ class _$_FetchMenuEvent implements _FetchMenuEvent {
     required TResult Function() fetch,
     required TResult Function(Day day) changeCurrentDay,
     required TResult Function(Uuid dishId) addDish,
+    required TResult Function() weekBack,
+    required TResult Function() weekForward,
   }) {
     return fetch();
   }
@@ -131,6 +145,8 @@ class _$_FetchMenuEvent implements _FetchMenuEvent {
     TResult? Function()? fetch,
     TResult? Function(Day day)? changeCurrentDay,
     TResult? Function(Uuid dishId)? addDish,
+    TResult? Function()? weekBack,
+    TResult? Function()? weekForward,
   }) {
     return fetch?.call();
   }
@@ -141,6 +157,8 @@ class _$_FetchMenuEvent implements _FetchMenuEvent {
     TResult Function()? fetch,
     TResult Function(Day day)? changeCurrentDay,
     TResult Function(Uuid dishId)? addDish,
+    TResult Function()? weekBack,
+    TResult Function()? weekForward,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -156,6 +174,8 @@ class _$_FetchMenuEvent implements _FetchMenuEvent {
     required TResult Function(_ChangeCurrentDayMenuEvent value)
         changeCurrentDay,
     required TResult Function(_AddDishMenuEvent value) addDish,
+    required TResult Function(_WeekBackMenuEvent value) weekBack,
+    required TResult Function(_WeekForwardMenuEvent value) weekForward,
   }) {
     return fetch(this);
   }
@@ -166,6 +186,8 @@ class _$_FetchMenuEvent implements _FetchMenuEvent {
     TResult? Function(_FetchMenuEvent value)? fetch,
     TResult? Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
     TResult? Function(_AddDishMenuEvent value)? addDish,
+    TResult? Function(_WeekBackMenuEvent value)? weekBack,
+    TResult? Function(_WeekForwardMenuEvent value)? weekForward,
   }) {
     return fetch?.call(this);
   }
@@ -176,6 +198,8 @@ class _$_FetchMenuEvent implements _FetchMenuEvent {
     TResult Function(_FetchMenuEvent value)? fetch,
     TResult Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
     TResult Function(_AddDishMenuEvent value)? addDish,
+    TResult Function(_WeekBackMenuEvent value)? weekBack,
+    TResult Function(_WeekForwardMenuEvent value)? weekForward,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -259,6 +283,8 @@ class _$_ChangeCurrentDayMenuEvent implements _ChangeCurrentDayMenuEvent {
     required TResult Function() fetch,
     required TResult Function(Day day) changeCurrentDay,
     required TResult Function(Uuid dishId) addDish,
+    required TResult Function() weekBack,
+    required TResult Function() weekForward,
   }) {
     return changeCurrentDay(day);
   }
@@ -269,6 +295,8 @@ class _$_ChangeCurrentDayMenuEvent implements _ChangeCurrentDayMenuEvent {
     TResult? Function()? fetch,
     TResult? Function(Day day)? changeCurrentDay,
     TResult? Function(Uuid dishId)? addDish,
+    TResult? Function()? weekBack,
+    TResult? Function()? weekForward,
   }) {
     return changeCurrentDay?.call(day);
   }
@@ -279,6 +307,8 @@ class _$_ChangeCurrentDayMenuEvent implements _ChangeCurrentDayMenuEvent {
     TResult Function()? fetch,
     TResult Function(Day day)? changeCurrentDay,
     TResult Function(Uuid dishId)? addDish,
+    TResult Function()? weekBack,
+    TResult Function()? weekForward,
     required TResult orElse(),
   }) {
     if (changeCurrentDay != null) {
@@ -294,6 +324,8 @@ class _$_ChangeCurrentDayMenuEvent implements _ChangeCurrentDayMenuEvent {
     required TResult Function(_ChangeCurrentDayMenuEvent value)
         changeCurrentDay,
     required TResult Function(_AddDishMenuEvent value) addDish,
+    required TResult Function(_WeekBackMenuEvent value) weekBack,
+    required TResult Function(_WeekForwardMenuEvent value) weekForward,
   }) {
     return changeCurrentDay(this);
   }
@@ -304,6 +336,8 @@ class _$_ChangeCurrentDayMenuEvent implements _ChangeCurrentDayMenuEvent {
     TResult? Function(_FetchMenuEvent value)? fetch,
     TResult? Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
     TResult? Function(_AddDishMenuEvent value)? addDish,
+    TResult? Function(_WeekBackMenuEvent value)? weekBack,
+    TResult? Function(_WeekForwardMenuEvent value)? weekForward,
   }) {
     return changeCurrentDay?.call(this);
   }
@@ -314,6 +348,8 @@ class _$_ChangeCurrentDayMenuEvent implements _ChangeCurrentDayMenuEvent {
     TResult Function(_FetchMenuEvent value)? fetch,
     TResult Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
     TResult Function(_AddDishMenuEvent value)? addDish,
+    TResult Function(_WeekBackMenuEvent value)? weekBack,
+    TResult Function(_WeekForwardMenuEvent value)? weekForward,
     required TResult orElse(),
   }) {
     if (changeCurrentDay != null) {
@@ -400,6 +436,8 @@ class _$_AddDishMenuEvent implements _AddDishMenuEvent {
     required TResult Function() fetch,
     required TResult Function(Day day) changeCurrentDay,
     required TResult Function(Uuid dishId) addDish,
+    required TResult Function() weekBack,
+    required TResult Function() weekForward,
   }) {
     return addDish(dishId);
   }
@@ -410,6 +448,8 @@ class _$_AddDishMenuEvent implements _AddDishMenuEvent {
     TResult? Function()? fetch,
     TResult? Function(Day day)? changeCurrentDay,
     TResult? Function(Uuid dishId)? addDish,
+    TResult? Function()? weekBack,
+    TResult? Function()? weekForward,
   }) {
     return addDish?.call(dishId);
   }
@@ -420,6 +460,8 @@ class _$_AddDishMenuEvent implements _AddDishMenuEvent {
     TResult Function()? fetch,
     TResult Function(Day day)? changeCurrentDay,
     TResult Function(Uuid dishId)? addDish,
+    TResult Function()? weekBack,
+    TResult Function()? weekForward,
     required TResult orElse(),
   }) {
     if (addDish != null) {
@@ -435,6 +477,8 @@ class _$_AddDishMenuEvent implements _AddDishMenuEvent {
     required TResult Function(_ChangeCurrentDayMenuEvent value)
         changeCurrentDay,
     required TResult Function(_AddDishMenuEvent value) addDish,
+    required TResult Function(_WeekBackMenuEvent value) weekBack,
+    required TResult Function(_WeekForwardMenuEvent value) weekForward,
   }) {
     return addDish(this);
   }
@@ -445,6 +489,8 @@ class _$_AddDishMenuEvent implements _AddDishMenuEvent {
     TResult? Function(_FetchMenuEvent value)? fetch,
     TResult? Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
     TResult? Function(_AddDishMenuEvent value)? addDish,
+    TResult? Function(_WeekBackMenuEvent value)? weekBack,
+    TResult? Function(_WeekForwardMenuEvent value)? weekForward,
   }) {
     return addDish?.call(this);
   }
@@ -455,6 +501,8 @@ class _$_AddDishMenuEvent implements _AddDishMenuEvent {
     TResult Function(_FetchMenuEvent value)? fetch,
     TResult Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
     TResult Function(_AddDishMenuEvent value)? addDish,
+    TResult Function(_WeekBackMenuEvent value)? weekBack,
+    TResult Function(_WeekForwardMenuEvent value)? weekForward,
     required TResult orElse(),
   }) {
     if (addDish != null) {
@@ -472,6 +520,248 @@ abstract class _AddDishMenuEvent implements MenuEvent {
   @JsonKey(ignore: true)
   _$$_AddDishMenuEventCopyWith<_$_AddDishMenuEvent> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_WeekBackMenuEventCopyWith<$Res> {
+  factory _$$_WeekBackMenuEventCopyWith(_$_WeekBackMenuEvent value,
+          $Res Function(_$_WeekBackMenuEvent) then) =
+      __$$_WeekBackMenuEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_WeekBackMenuEventCopyWithImpl<$Res>
+    extends _$MenuEventCopyWithImpl<$Res, _$_WeekBackMenuEvent>
+    implements _$$_WeekBackMenuEventCopyWith<$Res> {
+  __$$_WeekBackMenuEventCopyWithImpl(
+      _$_WeekBackMenuEvent _value, $Res Function(_$_WeekBackMenuEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_WeekBackMenuEvent implements _WeekBackMenuEvent {
+  const _$_WeekBackMenuEvent();
+
+  @override
+  String toString() {
+    return 'MenuEvent.weekBack()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WeekBackMenuEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function(Day day) changeCurrentDay,
+    required TResult Function(Uuid dishId) addDish,
+    required TResult Function() weekBack,
+    required TResult Function() weekForward,
+  }) {
+    return weekBack();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetch,
+    TResult? Function(Day day)? changeCurrentDay,
+    TResult? Function(Uuid dishId)? addDish,
+    TResult? Function()? weekBack,
+    TResult? Function()? weekForward,
+  }) {
+    return weekBack?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(Day day)? changeCurrentDay,
+    TResult Function(Uuid dishId)? addDish,
+    TResult Function()? weekBack,
+    TResult Function()? weekForward,
+    required TResult orElse(),
+  }) {
+    if (weekBack != null) {
+      return weekBack();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchMenuEvent value) fetch,
+    required TResult Function(_ChangeCurrentDayMenuEvent value)
+        changeCurrentDay,
+    required TResult Function(_AddDishMenuEvent value) addDish,
+    required TResult Function(_WeekBackMenuEvent value) weekBack,
+    required TResult Function(_WeekForwardMenuEvent value) weekForward,
+  }) {
+    return weekBack(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchMenuEvent value)? fetch,
+    TResult? Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
+    TResult? Function(_AddDishMenuEvent value)? addDish,
+    TResult? Function(_WeekBackMenuEvent value)? weekBack,
+    TResult? Function(_WeekForwardMenuEvent value)? weekForward,
+  }) {
+    return weekBack?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchMenuEvent value)? fetch,
+    TResult Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
+    TResult Function(_AddDishMenuEvent value)? addDish,
+    TResult Function(_WeekBackMenuEvent value)? weekBack,
+    TResult Function(_WeekForwardMenuEvent value)? weekForward,
+    required TResult orElse(),
+  }) {
+    if (weekBack != null) {
+      return weekBack(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WeekBackMenuEvent implements MenuEvent {
+  const factory _WeekBackMenuEvent() = _$_WeekBackMenuEvent;
+}
+
+/// @nodoc
+abstract class _$$_WeekForwardMenuEventCopyWith<$Res> {
+  factory _$$_WeekForwardMenuEventCopyWith(_$_WeekForwardMenuEvent value,
+          $Res Function(_$_WeekForwardMenuEvent) then) =
+      __$$_WeekForwardMenuEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_WeekForwardMenuEventCopyWithImpl<$Res>
+    extends _$MenuEventCopyWithImpl<$Res, _$_WeekForwardMenuEvent>
+    implements _$$_WeekForwardMenuEventCopyWith<$Res> {
+  __$$_WeekForwardMenuEventCopyWithImpl(_$_WeekForwardMenuEvent _value,
+      $Res Function(_$_WeekForwardMenuEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_WeekForwardMenuEvent implements _WeekForwardMenuEvent {
+  const _$_WeekForwardMenuEvent();
+
+  @override
+  String toString() {
+    return 'MenuEvent.weekForward()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WeekForwardMenuEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function(Day day) changeCurrentDay,
+    required TResult Function(Uuid dishId) addDish,
+    required TResult Function() weekBack,
+    required TResult Function() weekForward,
+  }) {
+    return weekForward();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetch,
+    TResult? Function(Day day)? changeCurrentDay,
+    TResult? Function(Uuid dishId)? addDish,
+    TResult? Function()? weekBack,
+    TResult? Function()? weekForward,
+  }) {
+    return weekForward?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(Day day)? changeCurrentDay,
+    TResult Function(Uuid dishId)? addDish,
+    TResult Function()? weekBack,
+    TResult Function()? weekForward,
+    required TResult orElse(),
+  }) {
+    if (weekForward != null) {
+      return weekForward();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchMenuEvent value) fetch,
+    required TResult Function(_ChangeCurrentDayMenuEvent value)
+        changeCurrentDay,
+    required TResult Function(_AddDishMenuEvent value) addDish,
+    required TResult Function(_WeekBackMenuEvent value) weekBack,
+    required TResult Function(_WeekForwardMenuEvent value) weekForward,
+  }) {
+    return weekForward(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchMenuEvent value)? fetch,
+    TResult? Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
+    TResult? Function(_AddDishMenuEvent value)? addDish,
+    TResult? Function(_WeekBackMenuEvent value)? weekBack,
+    TResult? Function(_WeekForwardMenuEvent value)? weekForward,
+  }) {
+    return weekForward?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchMenuEvent value)? fetch,
+    TResult Function(_ChangeCurrentDayMenuEvent value)? changeCurrentDay,
+    TResult Function(_AddDishMenuEvent value)? addDish,
+    TResult Function(_WeekBackMenuEvent value)? weekBack,
+    TResult Function(_WeekForwardMenuEvent value)? weekForward,
+    required TResult orElse(),
+  }) {
+    if (weekForward != null) {
+      return weekForward(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WeekForwardMenuEvent implements MenuEvent {
+  const factory _WeekForwardMenuEvent() = _$_WeekForwardMenuEvent;
 }
 
 /// @nodoc
