@@ -104,7 +104,7 @@ class DataRepositoryImpl implements DataRepository {
   }
 
   @override
-  Future<Set<Ingredient>> getIngredientsByDateTimeRange({
+  Future<Set<Ingredient>> getDishesIngredientsByDateTimeRange({
     required Day startDay,
     required Day endDay,
   }) async {

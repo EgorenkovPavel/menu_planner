@@ -48,7 +48,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     _FetchCartEvent event,
     Emitter<CartState> emit,
   ) async {
-    final ingredients = await _dataRepository.getIngredientsByDateTimeRange(
+    final ingredients = await _dataRepository.getDishesIngredientsByDateTimeRange(
       startDay: state.startDay,
       endDay: state.endDay,
     );
@@ -63,7 +63,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     _SetDateRangeCartEvent event,
     Emitter<CartState> emit,
   ) async {
-    final ingredients = await _dataRepository.getIngredientsByDateTimeRange(
+    final ingredients = await _dataRepository.getDishesIngredientsByDateTimeRange(
       startDay: Day(date: event.startDay),
       endDay: Day(date: event.endDay),
     );
