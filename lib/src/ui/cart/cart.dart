@@ -13,6 +13,7 @@ class Cart extends StatelessWidget {
     DateTime startDay,
     DateTime endDay,
   ) async {
+    final bloc = context.read<CartBloc>();
     final range = await showDateRangePicker(
         context: context,
         initialDateRange: DateTimeRange(start: startDay, end: endDay),
@@ -22,7 +23,7 @@ class Cart extends StatelessWidget {
         builder: (context, child) {
           return Theme(
             data: Theme.of(context).copyWith(
-              colorScheme: ColorScheme.light(
+              colorScheme: const ColorScheme.light(
                 primary: Colors.green, // header background color
                 onPrimary: Colors.black, // header text color
                 onSurface: Colors.green, // body text color
@@ -32,7 +33,7 @@ class Cart extends StatelessWidget {
           );
         });
     if (range != null) {
-      context.read<CartBloc>().add(CartEvent.setDateRange(
+      bloc.add(CartEvent.setDateRange(
             startDay: range.start,
             endDay: range.end,
           ));

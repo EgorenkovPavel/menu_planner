@@ -8,7 +8,7 @@ class Dish extends Equatable{
   final String name;
   final Set<Ingredient> ingredients;
 
-  Dish({
+  const Dish({
     required this.id,
     required this.name,
     required this.ingredients,

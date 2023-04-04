@@ -38,7 +38,7 @@ class Menu extends StatelessWidget {
   }
 
   void _onCartPressed(BuildContext context){
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Cart()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Cart()));
   }
 
   @override

@@ -12,27 +12,27 @@ class IngredientInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => IngredientInputBloc(dataRepository: sl())
-        ..add(IngredientInputEvent.fetch()),
+        ..add(const IngredientInputEvent.fetch()),
       child: Builder(
         builder: (context) {
           return Scaffold(
             appBar: AppBar(
-              title: Text('Input ingredient'),
+              title: const Text('Input ingredient'),
             ),
             body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
                 children: [
                   TextField(
-                    decoration: InputDecoration(label: Text('Name')),
+                    decoration: const InputDecoration(label: Text('Name')),
                     onChanged: (text) => context
                         .read<IngredientInputBloc>()
                         .add(IngredientInputEvent.changeName(name: text)),
                   ),
                   Row(
                     children: [
-                      Text('Unit'),
-                      SizedBox(width: 16),
+                      const Text('Unit'),
+                      const SizedBox(width: 16),
                       BlocConsumer<IngredientInputBloc, IngredientInputState>(
                           listener: (context, state){
                             if (state.ingredientId != null){
@@ -42,7 +42,7 @@ class IngredientInput extends StatelessWidget {
                           builder: (context, state) {
                         return DropdownButton<Unit>(
                             value: state.unit,
-                            hint: Text('choose'),
+                            hint: const Text('choose'),
                             items: state.units
                                 .map((unit) => DropdownMenuItem(
                                       value: unit,
@@ -62,13 +62,13 @@ class IngredientInput extends StatelessWidget {
                             final newUnitName = await showDialog<String>(
                                 context: context,
                                 builder: (context) {
-                                  return UnitInputDialog();
+                                  return const UnitInputDialog();
                                 });
                             if (newUnitName != null) {
                               // context.read<IngredientInputBloc>().add(IngredientInputEvent)
                             }
                           },
-                          icon: Icon(Icons.add)),
+                          icon: const Icon(Icons.add)),
                     ],
                   )
                 ],
@@ -77,10 +77,10 @@ class IngredientInput extends StatelessWidget {
             persistentFooterButtons: [
               TextButton(onPressed: () {
                 Navigator.of(context).pop();
-              }, child: Text('Cancel')),
+              }, child: const Text('Cancel')),
               ElevatedButton(onPressed: () {
-                context.read<IngredientInputBloc>().add(IngredientInputEvent.save());
-              }, child: Text('OK')),
+                context.read<IngredientInputBloc>().add(const IngredientInputEvent.save());
+              }, child: const Text('OK')),
             ],
           );
         },
@@ -102,7 +102,7 @@ class _UnitInputDialogState extends State<UnitInputDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Enter unit'),
+      title: const Text('Enter unit'),
       content: TextField(
         controller: _nameController,
       ),
@@ -111,12 +111,12 @@ class _UnitInputDialogState extends State<UnitInputDialog> {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text('Cancel')),
+            child: const Text('Cancel')),
         ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop(_nameController.text);
             },
-            child: Text('OK'))
+            child: const Text('OK'))
       ],
     );
   }

@@ -18,13 +18,13 @@ class _SearchBarState extends State<SearchBar> {
         Expanded(
           child: TextField(
             onChanged: widget.onChange,
-            decoration: InputDecoration(prefixIcon: Icon(Icons.search), label: Text('Search')),
+            decoration: const InputDecoration(prefixIcon: Icon(Icons.search), label: Text('Search')),
           ),
         ),
-        SizedBox(width: 16),
+        const SizedBox(width: 16),
         ElevatedButton(
           onPressed: widget.onAdd,
-          child: Text('Add'),
+          child: const Text('Add'),
         ),
       ],
     );

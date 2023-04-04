@@ -14,23 +14,23 @@ class DataRepositoryImpl implements DataRepository {
   List<Unit> units = [];
 
   DataRepositoryImpl() {
-    units.add(Unit('kg'));
-    units.add(Unit('m'));
+    units.add(const Unit('kg'));
+    units.add(const Unit('m'));
 
-    final testo = Ingredient(id: Uuid(), name: 'Testo', unit: Unit('kg'));
+    const testo = Ingredient(id: Uuid(), name: 'Testo', unit: Unit('kg'));
     ingredients.add(testo);
 
-    final miaso = Ingredient(id: Uuid(), name: 'Miaso', unit: Unit('kg'));
+    const miaso = Ingredient(id: Uuid(), name: 'Miaso', unit: Unit('kg'));
     ingredients.add(miaso);
 
-    final pelmeni = Dish(id: Uuid(), name: 'Pelmeni', ingredients: {
+    final pelmeni = Dish(id: const Uuid(), name: 'Pelmeni', ingredients: {
       testo,
       miaso,
     });
 
     dishes.add(pelmeni);
 
-    final kotleta = Dish(id: Uuid(), name: 'Kotleta', ingredients: {
+    final kotleta = Dish(id: const Uuid(), name: 'Kotleta', ingredients: {
       miaso,
     });
 
@@ -66,7 +66,7 @@ class DataRepositoryImpl implements DataRepository {
     required Set<Ingredient> ingredients,
   }) async {
     final dish = Dish(
-      id: Uuid(),
+      id: const Uuid(),
       name: name,
       ingredients: ingredients,
     );
@@ -86,7 +86,7 @@ class DataRepositoryImpl implements DataRepository {
 
   @override
   Future<Uuid> addIngredient({required String name, required Unit unit}) async {
-    final ingredient = Ingredient(id: Uuid(), name: name, unit: unit);
+    final ingredient = Ingredient(id: const Uuid(), name: name, unit: unit);
     ingredients.add(ingredient);
     return ingredient.id;
   }
@@ -121,7 +121,7 @@ class DataRepositoryImpl implements DataRepository {
     while(!day.isAtSameMomentAs(endDay.date)){
       days.add(Day(date: day));
 
-      day = day.add(Duration(days: 1));
+      day = day.add(const Duration(days: 1));
     }
 
     return days;

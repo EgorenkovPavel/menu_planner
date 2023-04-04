@@ -11,7 +11,7 @@ class App extends StatelessWidget {
         useMaterial3: true,
         colorSchemeSeed: Colors.green,
       ),
-      home: Menu(),
+      home: const Menu(),
     );
   }
 }

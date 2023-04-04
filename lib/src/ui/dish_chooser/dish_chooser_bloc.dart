@@ -28,7 +28,7 @@ class DishChooserBloc extends Bloc<DishChooserEvent, DishChooserState> {
 
   DishChooserBloc({required DataRepository dataRepository})
       : _dataRepository = dataRepository,
-        super(DishChooserState.main(dishes: [])) {
+        super(const DishChooserState.main(dishes: [])) {
     on<DishChooserEvent>((event, emitter) => event.map(
           fetch: (event) => _onFetch(event, emitter),
           search: (event) => _onSearch(event, emitter),

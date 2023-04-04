@@ -11,12 +11,11 @@ class DishInput extends StatelessWidget {
   const DishInput({Key? key}) : super(key: key);
 
   Future<void> _onAddPressed(BuildContext context) async {
+    final bloc = context.read<DishInputBloc>();
     final ingredientId = await Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => const IngredientInput()));
     if (ingredientId != null) {
-      context
-          .read<DishInputBloc>()
-          .add(DishInputEvent.addIngredientById(ingredientId: ingredientId));
+      bloc.add(DishInputEvent.addIngredientById(ingredientId: ingredientId));
     }
   }
 

@@ -54,7 +54,7 @@ class IngredientInputBloc
 
   IngredientInputBloc({required DataRepository dataRepository})
       : _dataRepository = dataRepository,
-        super(IngredientInputState.main(
+        super(const IngredientInputState.main(
           units: [],
           name: '',
           unit: null,

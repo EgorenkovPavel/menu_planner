@@ -8,7 +8,7 @@ class Ingredient extends Equatable{
   final String name;
   final Unit unit;
 
-  Ingredient({
+  const Ingredient({
     required this.id,
     required this.name,
     required this.unit,
