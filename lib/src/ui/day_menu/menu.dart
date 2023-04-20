@@ -37,8 +37,9 @@ class Menu extends StatelessWidget {
     context.read<MenuBloc>().add(const MenuEvent.weekForward());
   }
 
-  void _onCartPressed(BuildContext context){
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Cart()));
+  void _onCartPressed(BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => const Cart()));
   }
 
   @override
@@ -52,7 +53,12 @@ class Menu extends StatelessWidget {
             appBar: AppBar(
               title: const Text('Menu planner'),
               actions: [
-                IconButton(onPressed: () => _onCartPressed(context), icon: const Icon(Icons.shopping_cart))
+                IconButton(
+                    onPressed: () => _onCartPressed(context),
+                    icon: const Icon(Icons.shopping_cart)),
+                IconButton(
+                    onPressed: () => Navigator.pushNamed(context, '/profile'),
+                    icon: Icon(Icons.person)),
               ],
             ),
             body: Padding(

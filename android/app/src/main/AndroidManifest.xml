@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.menu_planner">
+    package="com.epipasha.menu_planner">
    <application
         android:label="menu_planner"
         android:name="${applicationName}"

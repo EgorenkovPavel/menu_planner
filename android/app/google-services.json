@@ -7,14 +7,14 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:907801943810:android:00354bdee85f68a211ac1b",
+        "mobilesdk_app_id": "1:907801943810:android:88f0a3ef903c7e6f11ac1b",
         "android_client_info": {
-          "package_name": "com.example.menu_planner"
+          "package_name": "com.epipasha.menu_planner"
         }
       },
       "oauth_client": [
         {
-          "client_id": "907801943810-ibr8a24rpf6pjcf4rt4t81lb943lqt5h.apps.googleusercontent.com",
+          "client_id": "907801943810-08kt2p6h7jf45h9b6ugbt5d4hi2mpakk.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +27,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "907801943810-ibr8a24rpf6pjcf4rt4t81lb943lqt5h.apps.googleusercontent.com",
+              "client_id": "907801943810-08kt2p6h7jf45h9b6ugbt5d4hi2mpakk.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

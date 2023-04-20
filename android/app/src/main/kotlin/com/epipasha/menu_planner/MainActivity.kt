@@ -1,4 +1,4 @@
-package com.example.menu_planner
+package com.epipasha.menu_planner
 
 import io.flutter.embedding.android.FlutterActivity
 

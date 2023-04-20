@@ -9,38 +9,43 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
     return MaterialApp(
       theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: Colors.green,
       ),
       //home: const Menu(),
-      initialRoute: FirebaseAuth.instance.currentUser == null ? '/sign-in' : '/home',
+      initialRoute:
+          FirebaseAuth.instance.currentUser == null ? '/sign-in' : '/home',
       routes: {
         '/sign-in': (context) {
           return SignInScreen(
-            //providers: providers,
+            providers: [
+              GoogleProvider(
+                  clientId:
+                      '907801943810-08kt2p6h7jf45h9b6ugbt5d4hi2mpakk.apps.googleusercontent.com')
+            ],
             actions: [
               AuthStateChangeAction<SignedIn>((context, state) {
-                print('LOGINED!!!!');
-                //Navigator.pushReplacementNamed(context, '/home');
+                Navigator.pushReplacementNamed(context, '/home');
               }),
             ],
           );
         },
         '/home': (context) {
           return Menu();
-          // return ProfileScreen(
-          //   //providers: providers,
-          //   actions: [
-          //     SignedOutAction((context) {
-          //       Navigator.pushReplacementNamed(context, '/sign-in');
-          //     }),
-          //   ],
-          // );
+
         },
+        '/profile': (context){
+          return ProfileScreen(
+            //providers: providers,
+            actions: [
+              SignedOutAction((context) {
+                Navigator.pushReplacementNamed(context, '/sign-in');
+              }),
+            ],
+          );
+        }
       },
     );
   }

@@ -54,7 +54,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyADmA_qYQ-2Sz1uhe3SO8_4fJn-ytqrwOA',
-    appId: '1:907801943810:android:00354bdee85f68a211ac1b',
+    appId: '1:907801943810:android:88f0a3ef903c7e6f11ac1b',
     messagingSenderId: '907801943810',
     projectId: 'menu-planner-234fd',
     storageBucket: 'menu-planner-234fd.appspot.com',
