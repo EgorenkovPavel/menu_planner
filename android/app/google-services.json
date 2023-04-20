@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "907801943810-8dg42uc46d9mn5vp68puv4a0pq1gv4r2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.epipasha.menu_planner",
+            "certificate_hash": "de402f014726b78a3cf78e9bb4b397e360f01744"
+          }
+        },
+        {
           "client_id": "907801943810-08kt2p6h7jf45h9b6ugbt5d4hi2mpakk.apps.googleusercontent.com",
           "client_type": 3
         }
