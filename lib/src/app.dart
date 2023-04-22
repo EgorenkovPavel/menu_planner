@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:firebase_ui_oauth_google/firebase_ui_oauth_google.dart';
 import 'package:flutter/material.dart';
+import 'package:menu_planner/src/ui/database_chooser/database_chooser.dart';
 import 'package:menu_planner/src/ui/day_menu/menu.dart';
 
 class App extends StatelessWidget {
@@ -27,14 +28,16 @@ class App extends StatelessWidget {
             ],
             actions: [
               AuthStateChangeAction<SignedIn>((context, state) {
-                Navigator.pushReplacementNamed(context, '/home');
+                Navigator.pushReplacementNamed(context, '/database_chooser');
               }),
             ],
           );
         },
         '/home': (context) {
           return Menu();
-
+        },
+        '/database_chooser': (context){
+          return DatabaseChooser();
         },
         '/profile': (context){
           return ProfileScreen(

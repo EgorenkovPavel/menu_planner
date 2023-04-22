@@ -4,6 +4,7 @@ import 'package:uuid/uuid.dart';
 import '../models/day.dart';
 import '../models/dish.dart';
 import '../models/unit.dart';
+import '../models/user.dart';
 
 abstract class DataRepository {
 
@@ -34,5 +35,7 @@ abstract class DataRepository {
   Future<List<Unit>> getAllUnits();
 
   Future<Unit> addUnit({required String name});
+
+  Future<void> createDatabase(User user);
 
 }

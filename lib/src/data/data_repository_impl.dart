@@ -1,3 +1,4 @@
+import 'package:menu_planner/src/data/remote_database.dart';
 import 'package:menu_planner/src/domain/models/day.dart';
 import 'package:menu_planner/src/domain/models/dish.dart';
 import 'package:menu_planner/src/domain/models/ingredient.dart';
@@ -5,15 +6,17 @@ import 'package:menu_planner/src/domain/repositories/data_repository.dart';
 import 'package:uuid/uuid.dart';
 
 import '../domain/models/unit.dart';
+import '../domain/models/user.dart';
 
 class DataRepositoryImpl implements DataRepository {
+  final RemoteDatabase _remoteDatabase;
   Map<Day, List<Dish>> menu = {};
 
   List<Dish> dishes = [];
   List<Ingredient> ingredients = [];
   List<Unit> units = [];
 
-  DataRepositoryImpl() {
+  DataRepositoryImpl(this._remoteDatabase) {
     units.add(const Unit('kg'));
     units.add(const Unit('m'));
 
@@ -125,5 +128,10 @@ class DataRepositoryImpl implements DataRepository {
     }
 
     return days;
+  }
+
+  @override
+  Future<void> createDatabase(User user) async {
+    await  _remoteDatabase.createDatabase(user.id);
   }
 }
