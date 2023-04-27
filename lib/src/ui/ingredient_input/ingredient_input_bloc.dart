@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:uuid/uuid.dart';
 
 import '../../domain/models/unit.dart';
 import '../../domain/repositories/data_repository.dart';
@@ -29,7 +28,7 @@ class IngredientInputEvent with _$IngredientInputEvent {
 class IngredientInputState with _$IngredientInputState {
   const IngredientInputState._();
 
-  Uuid? get ingredientId => map(
+  String? get ingredientId => map(
         main: (_) => null,
         saved: (state) => state.ingredientId,
       );
@@ -44,7 +43,7 @@ class IngredientInputState with _$IngredientInputState {
     required String name,
     required Unit? unit,
     required List<Unit> units,
-    required Uuid ingredientId,
+    required String ingredientId,
   }) = _SavedIngredientInputState;
 }
 

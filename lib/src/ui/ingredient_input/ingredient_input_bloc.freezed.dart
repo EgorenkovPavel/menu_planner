@@ -821,7 +821,7 @@ mixin _$IngredientInputState {
   TResult when<TResult extends Object?>({
     required TResult Function(String name, Unit? unit, List<Unit> units) main,
     required TResult Function(
-            String name, Unit? unit, List<Unit> units, Uuid ingredientId)
+            String name, Unit? unit, List<Unit> units, String ingredientId)
         saved,
   }) =>
       throw _privateConstructorUsedError;
@@ -829,7 +829,7 @@ mixin _$IngredientInputState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String name, Unit? unit, List<Unit> units)? main,
     TResult? Function(
-            String name, Unit? unit, List<Unit> units, Uuid ingredientId)?
+            String name, Unit? unit, List<Unit> units, String ingredientId)?
         saved,
   }) =>
       throw _privateConstructorUsedError;
@@ -837,7 +837,7 @@ mixin _$IngredientInputState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name, Unit? unit, List<Unit> units)? main,
     TResult Function(
-            String name, Unit? unit, List<Unit> units, Uuid ingredientId)?
+            String name, Unit? unit, List<Unit> units, String ingredientId)?
         saved,
     required TResult orElse(),
   }) =>
@@ -1007,7 +1007,7 @@ class _$_MainIngredientInputState extends _MainIngredientInputState {
   TResult when<TResult extends Object?>({
     required TResult Function(String name, Unit? unit, List<Unit> units) main,
     required TResult Function(
-            String name, Unit? unit, List<Unit> units, Uuid ingredientId)
+            String name, Unit? unit, List<Unit> units, String ingredientId)
         saved,
   }) {
     return main(name, unit, units);
@@ -1018,7 +1018,7 @@ class _$_MainIngredientInputState extends _MainIngredientInputState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String name, Unit? unit, List<Unit> units)? main,
     TResult? Function(
-            String name, Unit? unit, List<Unit> units, Uuid ingredientId)?
+            String name, Unit? unit, List<Unit> units, String ingredientId)?
         saved,
   }) {
     return main?.call(name, unit, units);
@@ -1029,7 +1029,7 @@ class _$_MainIngredientInputState extends _MainIngredientInputState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name, Unit? unit, List<Unit> units)? main,
     TResult Function(
-            String name, Unit? unit, List<Unit> units, Uuid ingredientId)?
+            String name, Unit? unit, List<Unit> units, String ingredientId)?
         saved,
     required TResult orElse(),
   }) {
@@ -1099,7 +1099,7 @@ abstract class _$$_SavedIngredientInputStateCopyWith<$Res>
       __$$_SavedIngredientInputStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, Unit? unit, List<Unit> units, Uuid ingredientId});
+  $Res call({String name, Unit? unit, List<Unit> units, String ingredientId});
 }
 
 /// @nodoc
@@ -1136,7 +1136,7 @@ class __$$_SavedIngredientInputStateCopyWithImpl<$Res>
       ingredientId: null == ingredientId
           ? _value.ingredientId
           : ingredientId // ignore: cast_nullable_to_non_nullable
-              as Uuid,
+              as String,
     ));
   }
 }
@@ -1165,7 +1165,7 @@ class _$_SavedIngredientInputState extends _SavedIngredientInputState {
   }
 
   @override
-  final Uuid ingredientId;
+  final String ingredientId;
 
   @override
   String toString() {
@@ -1200,7 +1200,7 @@ class _$_SavedIngredientInputState extends _SavedIngredientInputState {
   TResult when<TResult extends Object?>({
     required TResult Function(String name, Unit? unit, List<Unit> units) main,
     required TResult Function(
-            String name, Unit? unit, List<Unit> units, Uuid ingredientId)
+            String name, Unit? unit, List<Unit> units, String ingredientId)
         saved,
   }) {
     return saved(name, unit, units, ingredientId);
@@ -1211,7 +1211,7 @@ class _$_SavedIngredientInputState extends _SavedIngredientInputState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String name, Unit? unit, List<Unit> units)? main,
     TResult? Function(
-            String name, Unit? unit, List<Unit> units, Uuid ingredientId)?
+            String name, Unit? unit, List<Unit> units, String ingredientId)?
         saved,
   }) {
     return saved?.call(name, unit, units, ingredientId);
@@ -1222,7 +1222,7 @@ class _$_SavedIngredientInputState extends _SavedIngredientInputState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name, Unit? unit, List<Unit> units)? main,
     TResult Function(
-            String name, Unit? unit, List<Unit> units, Uuid ingredientId)?
+            String name, Unit? unit, List<Unit> units, String ingredientId)?
         saved,
     required TResult orElse(),
   }) {
@@ -1269,7 +1269,7 @@ abstract class _SavedIngredientInputState extends IngredientInputState {
       {required final String name,
       required final Unit? unit,
       required final List<Unit> units,
-      required final Uuid ingredientId}) = _$_SavedIngredientInputState;
+      required final String ingredientId}) = _$_SavedIngredientInputState;
   const _SavedIngredientInputState._() : super._();
 
   @override
@@ -1278,7 +1278,7 @@ abstract class _SavedIngredientInputState extends IngredientInputState {
   Unit? get unit;
   @override
   List<Unit> get units;
-  Uuid get ingredientId;
+  String get ingredientId;
   @override
   @JsonKey(ignore: true)
   _$$_SavedIngredientInputStateCopyWith<_$_SavedIngredientInputState>

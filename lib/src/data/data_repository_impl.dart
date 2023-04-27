@@ -6,41 +6,14 @@ import 'package:menu_planner/src/domain/repositories/data_repository.dart';
 import 'package:uuid/uuid.dart';
 
 import '../domain/models/unit.dart';
-import '../domain/models/user.dart';
 
 class DataRepositoryImpl implements DataRepository {
   final RemoteDatabase _remoteDatabase;
   Map<Day, List<Dish>> menu = {};
 
   List<Dish> dishes = [];
-  List<Ingredient> ingredients = [];
-  List<Unit> units = [];
 
-  DataRepositoryImpl(this._remoteDatabase) {
-    units.add(const Unit('kg'));
-    units.add(const Unit('m'));
-
-    const testo = Ingredient(id: Uuid(), name: 'Testo', unit: Unit('kg'));
-    ingredients.add(testo);
-
-    const miaso = Ingredient(id: Uuid(), name: 'Miaso', unit: Unit('kg'));
-    ingredients.add(miaso);
-
-    final pelmeni = Dish(id: const Uuid(), name: 'Pelmeni', ingredients: {
-      testo,
-      miaso,
-    });
-
-    dishes.add(pelmeni);
-
-    final kotleta = Dish(id: const Uuid(), name: 'Kotleta', ingredients: {
-      miaso,
-    });
-
-    dishes.add(kotleta);
-
-    menu[Day(date: DateTime.now())] = [pelmeni];
-  }
+  DataRepositoryImpl(this._remoteDatabase);
 
   @override
   Future<List<Dish>> getDayMenu(Day day) async {
@@ -60,7 +33,18 @@ class DataRepositoryImpl implements DataRepository {
 
   @override
   Future<List<Ingredient>> getAllIngredients({String search = ''}) async {
-    return ingredients;
+    final list = await _remoteDatabase.getAllIngredients();
+    final result = <Ingredient>[];
+    for (final e in list) {
+      final unit = await getUnitById(e.unitId);
+      if (unit != null) {
+        result.add(Ingredient(id: e.id, name: e.name, unit: unit));
+      } else {
+        throw Exception(
+            'Can\'t find unit by id ${e.unitId} for ingredient ${e.id}');
+      }
+    }
+    return result;
   }
 
   @override
@@ -78,27 +62,50 @@ class DataRepositoryImpl implements DataRepository {
   }
 
   @override
-  Future<Ingredient> getIngredientById({required Uuid ingredientId}) async {
-    return ingredients.firstWhere((element) => element.id == ingredientId);
+  Future<Ingredient?> getIngredientById({required String ingredientId}) async {
+    final dbIngredient = await _remoteDatabase.getIngredientById(ingredientId);
+    if (dbIngredient == null) {
+      return null;
+    }
+    final dbUnit = await getUnitById(dbIngredient.unitId);
+    if (dbUnit == null) {
+      throw Exception(
+          'Can\'t find unid by id ${dbIngredient.unitId} for ingredient ${dbIngredient.id}');
+    }
+    return Ingredient(
+        id: dbIngredient.id,
+        name: dbIngredient.name,
+        unit: Unit(id: dbUnit.id, name: dbUnit.name));
   }
 
   @override
-  Future<List<Unit>> getAllUnits() async {
-    return units;
-  }
-
-  @override
-  Future<Uuid> addIngredient({required String name, required Unit unit}) async {
-    final ingredient = Ingredient(id: const Uuid(), name: name, unit: unit);
-    ingredients.add(ingredient);
+  Future<String> addIngredient(
+      {required String name, required Unit unit}) async {
+    final id = await _remoteDatabase.addIngredient(name: name, unitId: unit.id);
+    final ingredient = Ingredient(id: id, name: name, unit: unit);
     return ingredient.id;
   }
 
   @override
   Future<Unit> addUnit({required String name}) async {
-    final unit = Unit(name);
-    units.add(unit);
+    final id = await _remoteDatabase.addUnit(name);
+    final unit = Unit(id: id, name: name);
     return unit;
+  }
+
+  Future<Unit?> getUnitById(String id) async {
+    final result = await _remoteDatabase.getUnitById(id);
+    if (result == null) {
+      return null;
+    } else {
+      return Unit(name: result.name, id: result.id);
+    }
+  }
+
+  @override
+  Future<List<Unit>> getAllUnits() async {
+    final dbUnits = await _remoteDatabase.getAllUnits();
+    return dbUnits.map((e) => Unit(name: e.name, id: e.id)).toList();
   }
 
   @override
@@ -112,16 +119,17 @@ class DataRepositoryImpl implements DataRepository {
     required Day endDay,
   }) async {
     final rangeIngredients = <Ingredient>{};
-    for(final day in _daysInRange(startDay, endDay)){
-      rangeIngredients.addAll((menu[day] ?? []).expand((dish) => dish.ingredients));
+    for (final day in _daysInRange(startDay, endDay)) {
+      rangeIngredients
+          .addAll((menu[day] ?? []).expand((dish) => dish.ingredients));
     }
     return rangeIngredients;
   }
 
-  Set<Day> _daysInRange(Day startDay, Day endDay){
+  Set<Day> _daysInRange(Day startDay, Day endDay) {
     Set<Day> days = {startDay};
     DateTime day = startDay.date;
-    while(!day.isAtSameMomentAs(endDay.date)){
+    while (!day.isAtSameMomentAs(endDay.date)) {
       days.add(Day(date: day));
 
       day = day.add(const Duration(days: 1));

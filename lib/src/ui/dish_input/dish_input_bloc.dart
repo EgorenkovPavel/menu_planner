@@ -22,7 +22,7 @@ class DishInputEvent with _$DishInputEvent {
   const factory DishInputEvent.changeName({required String name}) =
       _ChangeNameDishInputEvent;
 
-  const factory DishInputEvent.addIngredientById({required Uuid ingredientId}) =
+  const factory DishInputEvent.addIngredientById({required String ingredientId}) =
       _AddIngredientByIdDishInputEvent;
 
   const factory DishInputEvent.removeIngredient(
@@ -142,11 +142,14 @@ class DishInputBloc extends Bloc<DishInputEvent, DishInputState> {
   ) async {
     final ingredient = await _dataRepository.getIngredientById(
         ingredientId: event.ingredientId);
-    emit(DishInputState.main(
-      name: state.name,
-      ingredients: state.ingredients,
-      dishIngredients: state.dishIngredients.toSet()..add(ingredient),
-    ));
+    if (ingredient != null) {
+      emit(DishInputState.main(
+        name: state.name,
+        ingredients: state.ingredients,
+        dishIngredients: state.dishIngredients.toSet()
+          ..add(ingredient),
+      ));
+    }
   }
 
   FutureOr _onRemoveIngredient(

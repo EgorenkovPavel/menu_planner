@@ -1,10 +1,9 @@
 import 'package:equatable/equatable.dart';
-import 'package:uuid/uuid.dart';
 
 import 'unit.dart';
 
 class Ingredient extends Equatable{
-  final Uuid id;
+  final String id;
   final String name;
   final Unit unit;
 
