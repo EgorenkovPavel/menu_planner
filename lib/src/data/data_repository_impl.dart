@@ -129,9 +129,4 @@ class DataRepositoryImpl implements DataRepository {
 
     return days;
   }
-
-  @override
-  Future<void> createDatabase(User user) async {
-    await  _remoteDatabase.createDatabase(user.id);
-  }
 }

@@ -10,7 +10,7 @@ final sl = GetIt.instance;
 void setup() {
 
   sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl());
-  sl.registerLazySingleton<RemoteDatabase>(() => RemoteDatabase());
+
   sl.registerLazySingleton<DataRepository>(
       () => DataRepositoryImpl(sl<RemoteDatabase>()));
 }

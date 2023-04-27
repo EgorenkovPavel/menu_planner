@@ -4,17 +4,25 @@ import 'package:menu_planner/src/domain/models/day.dart';
 import '../domain/models/dish.dart';
 
 class RemoteDatabase {
-  final _db = FirebaseFirestore.instance;
-  DocumentReference<Map<String, dynamic>>? _myDb;
+  static final _db = FirebaseFirestore.instance;
+  final DocumentReference<Map<String, dynamic>> _myDb;
 
-  Future<void> createDatabase(String userId) async {
-    _myDb = await _db.collection('database').add({
+  RemoteDatabase._(this._myDb);
+
+  static Future<RemoteDatabase> create(String userId) async {
+    final _myDb = await _db.collection('databases').add({
       'users': [userId],
     });
+    return RemoteDatabase._(_myDb);
   }
 
-  Future<void> findMyDb(String userId) async {
-    await _db.collection('databases').where('users', arrayContains: userId).get();
+  static Future<RemoteDatabase?> find(String userId) async {
+    final _myDb = await _db.collection('databases').where('users', arrayContains: userId).get();
+    if (_myDb.docs.isEmpty){
+      return null;
+    }else {
+      return RemoteDatabase._(_myDb.docs.first.reference);
+    }
   }
 
   void addDishToMenu(Day day, Dish dish) {

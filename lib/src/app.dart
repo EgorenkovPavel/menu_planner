@@ -2,6 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:firebase_ui_oauth_google/firebase_ui_oauth_google.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:menu_planner/src/data/auth_repository_impl.dart';
+import 'package:menu_planner/src/domain/repositories/auth_repository.dart';
 import 'package:menu_planner/src/ui/database_chooser/database_chooser.dart';
 import 'package:menu_planner/src/ui/day_menu/menu.dart';
 
@@ -17,7 +20,7 @@ class App extends StatelessWidget {
       ),
       //home: const Menu(),
       initialRoute:
-          FirebaseAuth.instance.currentUser == null ? '/sign-in' : '/home',
+          FirebaseAuth.instance.currentUser == null ? '/sign-in' : '/database_chooser',
       routes: {
         '/sign-in': (context) {
           return SignInScreen(

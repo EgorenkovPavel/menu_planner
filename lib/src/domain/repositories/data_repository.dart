@@ -7,7 +7,6 @@ import '../models/unit.dart';
 import '../models/user.dart';
 
 abstract class DataRepository {
-
   Future<List<Dish>> getDayMenu(Day day);
 
   Future<void> addDishToMenu(Uuid dishId, Day day);
@@ -35,7 +34,4 @@ abstract class DataRepository {
   Future<List<Unit>> getAllUnits();
 
   Future<Unit> addUnit({required String name});
-
-  Future<void> createDatabase(User user);
-
 }
